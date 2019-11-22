@@ -17,8 +17,14 @@ public class test {
         return "login";
     }
     @RequestMapping(value = "enter" ,method = RequestMethod.POST)
-    @ResponseBody
+    // @ResponseBody
     public  String enter(User user){
-       return "登录成功";
+        System.out.printf(user.toString());
+        return "redirect:home";
+    }
+    @GetMapping("home")
+    public String home(User user){
+
+        return "home";
     }
 }

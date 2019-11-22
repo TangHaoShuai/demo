@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.springframework.org/schema/jdbc">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="layui-v2.5.5/layui/css/layui.css">
 </head>
 <body class="layui-layout-body">
+
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
         <div class="layui-logo">柳职考试系统</div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
             <li class="layui-nav-item"><a href="">首页</a></li>
-<!--            <span class="layui-nav-bar" style="left: 54px; top: 55px; width: 0px; opacity: 0;"></span>-->
-            <li class="layui-nav-item"><a href="">考试管理</a></li>
-            <li class="layui-nav-item"><a href="">试卷管理</a></li>
-            <li class="layui-nav-item"><a href="">用户管理</a></li>
+            <li class="layui-nav-item"><a onclick="Exam()">考试管理</a></li>
+            <li class="layui-nav-item"><a onclick="examinationPaper()">试卷管理</a></li>
+            <li class="layui-nav-item"><a onclick="User()">用户管理</a></li>
             <li class="layui-nav-item">
                 <a href="javascript:;">其它系统</a>
                 <dl class="layui-nav-child">
@@ -43,7 +43,7 @@
     <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll">
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+            <ul class="layui-nav layui-nav-tree" lay-filter="test">
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;">题库</a>
                     <dl class="layui-nav-child">
@@ -53,41 +53,24 @@
                         <dd><a href="">超链接</a></dd>
                     </dl>
                 </li>
-             
+
                 <li class="layui-nav-item"><a href="">易错题</a></li>
                 <li class="layui-nav-item"><a href="">待开发</a></li>
             </ul>
         </div>
     </div>
 
-    <div class="layui-body" style="display: none;">
+
+    <!-- 首页的盒子  默认显示首页 不隐藏 -->
+    <div id="home" class="layui-body">
         <!-- 内容主体区域 -->
-        
-        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-            <legend>跨域--------------------中国图书馆</legend>
-        </fieldset>
-        
-<!--    <iframe src="http://www.chnlib.com/" width="100%" height="100%"></iframe>-->
 
-        <iframe id="content" src="http://www.chnlib.com/" scrolling="no" height="100%" width="100%"></iframe>
-  
-
-    <div class="layui-footer">
-        <!-- 底部固定区域 -->
-        © lzzy.net - 毕业设计
-    </div>
-</div>
-
-    <div id="demo" class="layui-body" style="display: none;">
-        <!-- 内容主体区域 -->
 
         <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
             <legend>跨域--------------------中国图书馆</legend>
         </fieldset>
 
-        <!--    <iframe src="http://www.chnlib.com/" width="100%" height="100%"></iframe>-->
-
-        <iframe id="content1" src="http://www.chnlib.com/" scrolling="no" width="100%"></iframe>
+        <!--     <iframe id="content1" src="http://www.chnlib.com/" scrolling="no" width="100%"></iframe>-->
 
 
         <div class="layui-footer">
@@ -96,32 +79,258 @@
         </div>
     </div>
 
-
-<script src="layui-v2.5.5/layui/layui.js"></script>
-<script>
-
-
-
-// 解析：将你嵌入页面的高度设置成屏幕可视高度减去原框架顶部和底部高度（宽度设置同理）。
-    reSerSize();
-    window.onresize = reSerSize();
-    function  reSerSize() {
-        var windowsheight = window.innerHeight;
-        document.getElementById("content1").style.height = (windowsheight-150)+"px";
-    }
-
-document.getElementById("demo").style.display="";//显示
-
-    //JavaScript代码区域
-    layui.use('element', function(){
-        var element = layui.element;
-
-    });
+    <!--    考试管理盒子-->
+    <div id="exam" class="layui-body" style="display: none;">
+        <!-- 内容主体区域 -->
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+            <legend>考试管理</legend>
+        </fieldset>
+    </div>
 
 
+    <!--    试卷管理得盒子-->
+    <div id="examinationPaper" class="layui-body" style="display: none;">
+        <!-- 内容主体区域 -->
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+            <legend>试卷管理</legend>
+        </fieldset>
+    </div>
 
-</script>
+    <!--    用户管理的盒子-->
+    <div id="useraDministration" class="layui-body" style="display: none;">
+        <!-- 内容主体区域 -->
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+            <legend>用户管理</legend>
+        </fieldset>
 
+        <table class="layui-hide" id="demo" lay-filter="test"></table>
+
+        <script type="text/html" id="barDemo">
+            <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+            <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+        </script>
+
+
+    </div>
+
+
+    <script src="layui-v2.5.5/layui/layui.js"></script>
+    <!--th:inline="none"-->
+
+    <script th:inline="none">
+
+        layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element', 'slider'], function () {
+            var laydate = layui.laydate //日期
+                , laypage = layui.laypage //分页
+                , layer = layui.layer //弹层
+                , table = layui.table //表格
+                , carousel = layui.carousel //轮播
+                , upload = layui.upload //上传
+                , element = layui.element //元素操作
+                , slider = layui.slider //滑块
+
+            //向世界问个好
+            layer.msg('Hello World');
+
+            //监听Tab切换
+            element.on('tab(demo)', function (data) {
+                layer.tips('切换了 ' + data.index + '：' + this.innerHTML, this, {
+                    tips: 1
+                });
+            });
+
+            //执行一个 table 实例
+            table.render({
+                elem: '#demo'
+                , height: 650
+                , url: 'json/demo1.json' //数据接口
+                , title: '用户表'
+                , page: true //开启分页
+                , limits: [20, 30, 40]
+                , limit: 20 //每页默认显示的数量
+                , toolbar: 'default' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
+                , totalRow: false //开启合计行
+                , cols: [[ //表头
+                    {type: 'checkbox', fixed: 'left'}
+                    , {field: 'id', title: 'ID', width: 80, fixed: 'left', totalRowText: '合计：'}
+                    , {field: 'studentNumber', title: '学号', width: 150, sort: true, totalRow: true}
+                    , {field: 'username', title: '用户名', width: 80}
+                    , {field: 'email', title: '邮箱', width: 150, totalRow: true}
+                    , {field: 'phone', title: '手机号', width: 150, totalRow: true}
+                    , {field: 'sex', title: '性别', width: 80, sort: true}
+                    , {field: 'city', title: '城市', width: 150}
+                    , {field: 'sign', title: '签名', width: 250}
+                    , {field: 'classify', title: '职业', width: 80}
+                    , {field: 'wealth', title: '财富', width: 80, sort: true, totalRow: true}
+                    , {fixed: 'right', width: 200, align: 'center', toolbar: '#barDemo'}
+                ]]
+            });
+
+            //监听头工具栏事件
+            table.on('toolbar(test)', function (obj) {
+                var checkStatus = table.checkStatus(obj.config.id)
+                    , data = checkStatus.data; //获取选中的数据
+                switch (obj.event) {
+                    case 'add':
+                        layer.msg('添加');
+                        break;
+                    case 'update':
+                        if (data.length === 0) {
+                            layer.msg('请选择一行');
+                        } else if (data.length > 1) {
+                            layer.msg('只能同时编辑一个');
+                        } else {
+                            layer.alert('编辑 [studentNumber]：' + checkStatus.data[0].studentNumber);
+                        }
+                        break;
+                    case 'delete':
+                        if (data.length === 0) {
+                            layer.msg('请选择一行');
+                        } else {
+                            layer.msg('删除');
+                        }
+                        break;
+                }
+                ;
+            });
+
+            //监听行工具事件
+            table.on('tool(test)', function (obj) { //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+                var data = obj.data //获得当前行数据
+                    , layEvent = obj.event; //获得 lay-event 对应的值
+                if (layEvent === 'detail') {
+                    layer.msg('查看操作' + data.id);
+                } else if (layEvent === 'del') {
+                    layer.confirm('真的删除行么', function (index) {
+                        obj.del(); //删除对应行（tr）的DOM结构
+                        layer.close(index);
+                        //向服务端发送删除指令
+                    });
+                } else if (layEvent === 'edit') {
+                    layer.msg('编辑操作');
+                    //在这里面输入任何合法的js语句
+                    Popout(data.studentNumber)
+                }
+            });
+        });
+
+        function Popout( mzz) {
+            layer.open({
+                type: 1 //Page层类型
+                , area: ['500px', '300px']
+                , title: '修改学号为:' + mzz + ' 的信息'
+                , shade: 0.6 //遮罩透明度
+                , maxmin: true //允许全屏最小化
+                , anim: 1 //0-6的动画形式，-1不开启
+                , content: '<form class="layui-form" action="">\n' +
+                    '  <div class="layui-form-item">\n' +
+                    '    <label class="layui-form-label">用户名</label>\n' +
+                    '    <div class="layui-input-block">\n' +
+                    '      <input type="text" name="username" lay-verify="required" lay-reqtext="用户名是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">\n' +
+                    '    </div>\n' +
+                    '  </div>\n' +
+                    '  <div class="layui-form-item">\n' +
+                    '    <label class="layui-form-label">城市</label>\n' +
+                    '    <div class="layui-input-block">\n' +
+                    '      <input type="text" name="city" lay-verify="required" lay-reqtext="邮箱是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">\n' +
+                    '    </div>\n' +
+                    '  </div>\n' +
+                    '  <div class="layui-form-item">\n' +
+                    '    <div class="layui-inline">\n' +
+                    '      <label class="layui-form-label">验证手机</label>\n' +
+                    '      <div class="layui-input-inline">\n' +
+                    '        <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input">\n' +
+                    '      </div>\n' +
+                    '    </div>\n' +
+                    '    <div class="layui-inline">\n' +
+                    '      <label class="layui-form-label">验证邮箱</label>\n' +
+                    '      <div class="layui-input-inline">\n' +
+                    '        <input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input">\n' +
+                    '      </div>\n' +
+                    '    </div>\n' +
+                    '  </div>\n' +
+                    '  <div class="layui-form-item">\n' +
+                    '    <label class="layui-form-label">签名</label>\n' +
+                    '    <div class="layui-input-block">\n' +
+                    '      <input type="text" name="sign" lay-verify="required" lay-reqtext="签名是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">\n' +
+                    '    </div>\n' +
+                    '  </div>\n' +
+                    '  <div class="layui-form-item">\n' +
+                    '    <label class="layui-form-label">职业</label>\n' +
+                    '    <div class="layui-input-block">\n' +
+                    '      <input type="text" name="classify" lay-verify="required" lay-reqtext="职业是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">\n' +
+                    '    </div>\n' +
+                    '  </div>\n' +
+                    '  <div class="layui-form-item">\n' +
+                    '    <label class="layui-form-label">财富</label>\n' +
+                    '    <div class="layui-input-block">\n' +
+                    '      <input type="text" name="wealth" lay-verify="required" lay-reqtext="职业是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">\n' +
+                    '    </div>\n' +
+                    '  </div>\n' +
+                    '  <div class="layui-form-item">\n' +
+                    '    <label class="layui-form-label">单选框</label>\n' +
+                    '    <div class="layui-input-block">\n' +
+                    '      <input type="radio" name="sex" value="男" title="男" checked="">\n' +
+                    '      <input type="radio" name="sex" value="女" title="女">\n' +
+                    '      <input type="radio" name="sex" value="禁" title="禁用" disabled="">\n' +
+                    '    </div>\n' +
+                    '  </div>\n' +
+
+                    '  <div class="layui-form-item">\n' +
+                    '    <div class="layui-input-block">\n' +
+                    '      <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>\n' +
+                    '      <button type="reset" class="layui-btn layui-btn-primary">重置</button>\n' +
+                    '    </div>\n' +
+                    '  </div>\n' +
+                    '</form>'
+            });
+
+        }
+
+
+        </script>
+    <script>
+        // 考试管理
+        function Exam() {
+            document.getElementById("home").style.display = "none";//隐藏首页
+            document.getElementById("examinationPaper").style.display = "none";//隐藏试卷页面
+            document.getElementById("useraDministration").style.display = "none";//隐藏用户
+            document.getElementById("exam").style.display = "";//显示考试盒子
+        }
+
+        // 试卷管理
+        function examinationPaper() {
+            document.getElementById("home").style.display = "none";//隐藏首页
+            document.getElementById("examinationPaper").style.display = "";//显示试卷页面
+            document.getElementById("useraDministration").style.display = "none";//隐藏用户
+            document.getElementById("exam").style.display = "none";//隐藏考试盒子
+        }
+
+        // 用户管理
+        function User() {
+            document.getElementById("home").style.display = "none";//隐藏首页
+            document.getElementById("examinationPaper").style.display = "none";//隐藏试卷页面
+            document.getElementById("useraDministration").style.display = "";//显示用户
+            document.getElementById("exam").style.display = "none";//隐藏考试盒子
+        }
+
+        // 解析：将你嵌入页面的高度设置成屏幕可视高度减去原框架顶部和底部高度（宽度设置同理）。
+        // reSerSize();
+        // window.onresize = reSerSize();
+        //跨域HTML 代码
+        // function reSerSize() {
+        //     var windowsheight = window.innerHeight;
+        //     document.getElementById("content1").style.height = (windowsheight - 50) + "px";
+        // }
+
+        //JavaScript代码区域
+        layui.use('element', function () {
+            var element = layui.element;
+        });
+
+    </script>
 
 </body>
+
 </html>
