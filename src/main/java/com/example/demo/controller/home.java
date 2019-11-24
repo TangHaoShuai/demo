@@ -75,6 +75,7 @@ public class home {
         userRepository.delUser(user.getStudentNumber());
         Map<String, String> map = new HashMap<>();
         map.put("name","删除成功");
+
         return map;
     }
 
