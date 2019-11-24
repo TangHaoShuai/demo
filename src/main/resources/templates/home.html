@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.springframework.org/schema/jdbc">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>柳职考试平台</title>
     <link rel="stylesheet" href="layui-v2.5.5/layui/css/layui.css">
 </head>
 <body class="layui-layout-body">
@@ -103,12 +103,14 @@
             <legend>用户管理</legend>
         </fieldset>
 
+
         <table class="layui-hide" id="demo" lay-filter="test"></table>
 
         <script type="text/html" id="barDemo">
             <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
             <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
             <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+            <a class="layui-btn layui-btn-sm" lay-event="reload">重载</a>
         </script>
 
 
@@ -119,8 +121,8 @@
     <script src="layui-v2.5.5/layui/layui.js"></script>
     <!--th:inline="none"-->
 
+    <!-- 表单 -->
     <script th:inline="none">
-
         layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element', 'slider'], function () {
             var laydate = layui.laydate //日期
                 , laypage = layui.laypage //分页
@@ -130,22 +132,19 @@
                 , upload = layui.upload //上传
                 , element = layui.element //元素操作
                 , slider = layui.slider //滑块
-
             //向世界问个好
-            layer.msg('Hello World');
-
+            layer.msg('欢迎登录');
             //监听Tab切换
             element.on('tab(demo)', function (data) {
                 layer.tips('切换了 ' + data.index + '：' + this.innerHTML, this, {
                     tips: 1
                 });
             });
-
             //执行一个 table 实例
             table.render({
                 elem: '#demo'
                 , height: 650
-                , url: 'json/demo1.json' //数据接口
+                , url: '/home/userjson' //数据接口
                 , title: '用户表'
                 , page: true //开启分页
                 , limits: [20, 30, 40]
@@ -165,7 +164,7 @@
                     , {field: 'classify', title: '职业', width: 80}
                     , {field: 'wealth', title: '财富', width: 80, sort: true, totalRow: true}
                     , {fixed: 'right', width: 200, align: 'center', toolbar: '#barDemo'}
-                ]]
+                ]], id: 'testReload'
             });
 
             //监听头工具栏事件
@@ -175,7 +174,7 @@
                 switch (obj.event) {
                     case 'add':
                         layer.msg('添加');
-                        Popout("/home/AddUser","添加信息","","")
+                        Popout("/home/AddUser", "添加信息", "", "", "")
                         break;
                     case 'update':
                         if (data.length === 0) {
@@ -193,6 +192,7 @@
                             layer.msg('删除');
                         }
                         break;
+
                 }
                 ;
             });
@@ -205,24 +205,36 @@
                     layer.msg('查看操作' + data.id);
                 } else if (layEvent === 'del') {
                     layer.confirm('真的删除行么', function (index) {
+                        //向服务端发送删除指令
+                        deleteUser("/home/deleteUser", data.studentNumber);
+
                         obj.del(); //删除对应行（tr）的DOM结构
                         layer.close(index);
-                        //向服务端发送删除指令
+
                     });
                 } else if (layEvent === 'edit') {
                     layer.msg('编辑操作');
                     //在这里面输入任何合法的js语句
-                    Popout("userupdate","更新信息",data.studentNumber,"readonly=\"readonly\"")
+                    Popout("updateUser", "更新信息", data.studentNumber, "readonly=\"readonly\"", "update")
+                } else if (layEvent == "reload") {
+                    layer.msg('重载');
+                    // window.location.href="/home/home";
+                    //   var demoReload = $('#demoReload');
+                    //执行重载
+                    table.reload('testReload', {
+                        page: {
+                            curr: 1 //重新从第 1 页开始
+                        }
+                    }, 'data');
                 }
             });
         });
-
     </script>
 
     <script>
-
-        function Popout(MzzURL,title,studentNumber,mzzStyle) {
-            if (studentNumber == ""){
+        //封装起来的弹框
+        function Popout(MzzURL, title, studentNumber, mzzStyle, identifying) {
+            if (studentNumber == "") {
                 studentNumber = "输入新的学号"
             }
             layer.open({
@@ -236,7 +248,7 @@
                     '  <div class="layui-form-item">\n' +
                     '    <label class="layui-form-label">学号</label>\n' +
                     '    <div class="layui-input-block">\n' +
-                    '      <input type="text" value="'+ studentNumber+' " name="studentNumber" lay-verify="required" lay-reqtext="学号是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input" '+mzzStyle+ '>\n' +
+                    '      <input type="text" value="' + studentNumber + ' " name="studentNumber" lay-verify="required" lay-reqtext="学号是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input" ' + mzzStyle + '>\n' +
                     '    </div>\n' +
                     '  </div>\n' +
                     '  <div class="layui-form-item">\n' +
@@ -251,7 +263,7 @@
                     '      <input type="password" name="passWord" placeholder="请输入密码" autocomplete="off" class="layui-input">\n' +
                     '    </div>\n' +
                     '  </div>\n' +
-                    '  '+
+                    '  ' +
                     '  <div class="layui-form-item">\n' +
                     '    <label class="layui-form-label">城市</label>\n' +
                     '    <div class="layui-input-block">\n' +
@@ -299,26 +311,62 @@
                     '  </div>\n' +
                     '  <div class="layui-form-item">\n' +
                     '    <div class="layui-input-block">\n' +
-                    '      <button type="button" onclick=mzzSubmit("'+MzzURL+'") class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>\n' +
+                    '      <button type="button" onclick=mzzSubmit("' + MzzURL + '","' + identifying + '") class="layui-btn"   lay-submit="" lay-filter="demo1">立即提交</button>\n' +
                     '      <button type="reset"  class="layui-btn layui-btn-primary">重置</button>\n' +
                     '    </div>\n' +
                     '  </div>\n' +
                     '</form>'
             });
         }
+        ///添加 和 修改 Ajax
+        function mzzSubmit(MzzURL, mzzStyle) {
 
-        function mzzSubmit(MzzURL) {
+            if (mzzStyle.length > 0) {
+                $.ajax({
+                    //几个参数需要注意一下
+                    type: "POST",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: MzzURL,//url
+                    data: $('#form11').serialize(),
+                    success: function (data) {
+                        console.log(data.name);//打印服务端返回的数据(调试用)
+                        alert(data.name);
+                    },
+                    error: function () {
+                        alert("异常！");
+                    }
+                });
+            } else {
+                $.ajax({
+                    //几个参数需要注意一下
+                    type: "POST",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: MzzURL,//url
+                    data: $('#form11').serialize(),
+                    success: function (data) {
+                        console.log(data.name);//打印服务端返回的数据(调试用)
+                        alert(data.name);
+                    },
+                    error: function () {
+                        alert("异常！");
+                    }
+                });
+            }
+        }
+
+        //删除的Ajax
+        function deleteUser(MzzURL, studentNumber) {
             $.ajax({
                 //几个参数需要注意一下
                 type: "POST",//方法类型
                 dataType: "json",//预期服务器返回的数据类型
-                url: MzzURL ,//url
-                data: $('#form11').serialize(),
+                url: MzzURL,//url
+                data: {"studentNumber": studentNumber},
                 success: function (data) {
-                        console.log(data.name);//打印服务端返回的数据(调试用)
-                        alert(data.name);
+                    console.log(data.name);//打印服务端返回的数据(调试用)
+                    alert(data.name);
                 },
-                error : function() {
+                error: function () {
                     alert("异常！");
                 }
             });

@@ -26,10 +26,31 @@ class DemoApplicationTests {
     }
     @Test
     void inquire(){
-       List<User> users = new ArrayList<>();
+        User user = new User();
+        user.setStudentNumber("3");
+        userRepository.delUser(user.getStudentNumber());
 
-      users = userRepository.findAll();
-        System.out.printf(users.toString());
+    }
+    @Test
+    void updateUser(){
+        User user = new User();
+
+        user.setStudentNumber("20170313015");
+        user.setPhone("15778676033");
+        user.setSex("男");
+        user.setEmail("1648375651@qq.com");
+        user.setCity("广西玉林");
+        user.setUsername("靓仔");
+        user.setClassify("程序员");
+        user.setPassWord("0522");
+        user.setSign("20");
+        user.setWealth("620");
+       userRepository.updateUser(user.getStudentNumber(),
+               user.getUsername(),user.getPassWord()
+               ,user.getEmail(),user.getPhone(),user.getCity(),
+               user.getSign(),user.getClassify(),user.getWealth(),
+               user.getSex());
+
     }
 
 }

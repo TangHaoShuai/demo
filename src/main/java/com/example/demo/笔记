@@ -15,3 +15,17 @@ http statusCode(状态码) https://www.cnblogs.com/hao-1234-1234/p/8940079.html
         204（无内容）  服务器成功处理了请求，但未返回任何内容。
         205（重置内容） 服务器成功处理了请求，但未返回任何内容。与 204 响应不同，此响应要求请求者重置文档视图（例如清除表单内容以输入新内容）。
         206（部分内容）  服务器成功处理了部分 GET 请求。
+
+        有nativeQuery = true时，是可以执行原生sql语句，所谓原生sql，也就是说这段sql拷贝到数据库中，然后把参数值给一下就能运行了，比如：
+        @Query(value = "select * from product_rel where audit_id=?1 and process_object=0 ",nativeQuery = true)
+        List<ProductRel> findAllByProductAuditId(Integer id);
+
+
+  // 解析：将你嵌入页面的高度设置成屏幕可视高度减去原框架顶部和底部高度（宽度设置同理）。
+        // reSerSize();
+        // window.onresize = reSerSize();
+        //跨域HTML 代码
+        // function reSerSize() {
+        //     var windowsheight = window.innerHeight;
+        //     document.getElementById("content1").style.height = (windowsheight - 50) + "px";
+        // }
