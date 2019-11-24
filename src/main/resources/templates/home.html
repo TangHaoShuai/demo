@@ -114,6 +114,7 @@
 
     </div>
 
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
 
     <script src="layui-v2.5.5/layui/layui.js"></script>
     <!--th:inline="none"-->
@@ -174,6 +175,7 @@
                 switch (obj.event) {
                     case 'add':
                         layer.msg('添加');
+                        Popout("/home/AddUser","添加信息","","")
                         break;
                     case 'update':
                         if (data.length === 0) {
@@ -210,26 +212,46 @@
                 } else if (layEvent === 'edit') {
                     layer.msg('编辑操作');
                     //在这里面输入任何合法的js语句
-                    Popout(data.studentNumber)
+                    Popout("userupdate","更新信息",data.studentNumber,"readonly=\"readonly\"")
                 }
             });
         });
 
-        function Popout( mzz) {
+    </script>
+
+    <script>
+
+        function Popout(MzzURL,title,studentNumber,mzzStyle) {
+            if (studentNumber == ""){
+                studentNumber = "输入新的学号"
+            }
             layer.open({
                 type: 1 //Page层类型
                 , area: ['500px', '300px']
-                , title: '修改学号为:' + mzz + ' 的信息'
+                , title: title + studentNumber
                 , shade: 0.6 //遮罩透明度
                 , maxmin: true //允许全屏最小化
                 , anim: 1 //0-6的动画形式，-1不开启
-                , content: '<form class="layui-form" action="">\n' +
+                , content: '<form class="layui-form" id="form11" action="#" method ="Post">\n' +
+                    '  <div class="layui-form-item">\n' +
+                    '    <label class="layui-form-label">学号</label>\n' +
+                    '    <div class="layui-input-block">\n' +
+                    '      <input type="text" value="'+ studentNumber+' " name="studentNumber" lay-verify="required" lay-reqtext="学号是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input" '+mzzStyle+ '>\n' +
+                    '    </div>\n' +
+                    '  </div>\n' +
                     '  <div class="layui-form-item">\n' +
                     '    <label class="layui-form-label">用户名</label>\n' +
                     '    <div class="layui-input-block">\n' +
                     '      <input type="text" name="username" lay-verify="required" lay-reqtext="用户名是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">\n' +
                     '    </div>\n' +
                     '  </div>\n' +
+                    '<div class="layui-form-item">\n' +
+                    '    <label class="layui-form-label">密码</label>\n' +
+                    '    <div class="layui-input-block">\n' +
+                    '      <input type="password" name="passWord" placeholder="请输入密码" autocomplete="off" class="layui-input">\n' +
+                    '    </div>\n' +
+                    '  </div>\n' +
+                    '  '+
                     '  <div class="layui-form-item">\n' +
                     '    <label class="layui-form-label">城市</label>\n' +
                     '    <div class="layui-input-block">\n' +
@@ -273,23 +295,37 @@
                     '    <div class="layui-input-block">\n' +
                     '      <input type="radio" name="sex" value="男" title="男" checked="">\n' +
                     '      <input type="radio" name="sex" value="女" title="女">\n' +
-                    '      <input type="radio" name="sex" value="禁" title="禁用" disabled="">\n' +
                     '    </div>\n' +
                     '  </div>\n' +
-
                     '  <div class="layui-form-item">\n' +
                     '    <div class="layui-input-block">\n' +
-                    '      <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>\n' +
-                    '      <button type="reset" class="layui-btn layui-btn-primary">重置</button>\n' +
+                    '      <button type="button" onclick=mzzSubmit("'+MzzURL+'") class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>\n' +
+                    '      <button type="reset"  class="layui-btn layui-btn-primary">重置</button>\n' +
                     '    </div>\n' +
                     '  </div>\n' +
                     '</form>'
             });
-
         }
 
+        function mzzSubmit(MzzURL) {
+            $.ajax({
+                //几个参数需要注意一下
+                type: "POST",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: MzzURL ,//url
+                data: $('#form11').serialize(),
+                success: function (data) {
+                        console.log(data.name);//打印服务端返回的数据(调试用)
+                        alert(data.name);
+                },
+                error : function() {
+                    alert("异常！");
+                }
+            });
+        }
+    </script>
 
-        </script>
+
     <script>
         // 考试管理
         function Exam() {

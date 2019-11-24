@@ -18,10 +18,10 @@ class DemoApplicationTests {
     @Test
     void contextLoads() {
         User user = new User();
-        user.setUserName("123");
+
         user.setPassWord("123");
         user.setPhone("15778676033");
-        user.setSex(1);
+        user.setSex("女");
         userRepository.save(user);
     }
     @Test
