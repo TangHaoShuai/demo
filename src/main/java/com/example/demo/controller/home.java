@@ -22,8 +22,12 @@ public class home {
 
     @ResponseBody
     @GetMapping("/userjson")
-    public  Map<String,Object> userJosn(){
+    public  Map<String,Object> userJosn(String val){
         List<User> users = userRepository.findAll();
+        if(val.length() >0 ){
+            List<User> list = userRepository.findByStudentNumber(val);
+            users = list;
+        }
         Map<String,Object> map = new HashMap<>();
         map.put("code",0);
         map.put("msg",0);
@@ -54,9 +58,14 @@ public class home {
     @PostMapping("/AddUser")
     @ResponseBody
     public  Map<String, String> test(User user){
-        userRepository.save(user);
         Map<String, String> map = new HashMap<>();
-        map.put("name","添加成功");
+        if (user.getStudentNumber() == "" || user.getUsername() == "" || user.getPassWord() == "" || user.getEmail() == ""
+                || user.getPhone() == "" || user.getSign() == "" || user.getClassify() == "" || user.getWealth() == "" || user.getSex() == ""){
+            map.put("name","添加失败内容不能为空");
+        }else{
+            userRepository.save(user);
+            map.put("name","添加成功");
+        }
         return map;
     }
 
@@ -72,13 +81,18 @@ public class home {
     @PostMapping("/updateUser")
     @ResponseBody
     public  Map<String, String> updateUser(User user){
-        userRepository.updateUser(user.getStudentNumber(),
-                user.getUsername(),user.getPassWord()
-                ,user.getEmail(),user.getPhone(),user.getCity(),
-                user.getSign(),user.getClassify(),user.getWealth(),
-                user.getSex());
         Map<String, String> map = new HashMap<>();
-        map.put("name","修改成功");
+        if (user.getStudentNumber() == "" || user.getUsername() == "" || user.getPassWord() == "" || user.getEmail() == ""
+        || user.getPhone() == "" || user.getSign() == "" || user.getClassify() == "" || user.getWealth() == "" || user.getSex() == ""){
+            map.put("name","修改失败内容不能为空");
+        }else{
+            userRepository.updateUser(user.getStudentNumber(),
+                    user.getUsername(),user.getPassWord()
+                    ,user.getEmail(),user.getPhone(),user.getCity(),
+                    user.getSign(),user.getClassify(),user.getWealth(),
+                    user.getSex());
+            map.put("name","修改成功");
+        }
         return map;
     }
 }

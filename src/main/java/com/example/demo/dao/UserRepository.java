@@ -11,6 +11,7 @@ import java.util.List;
 public interface UserRepository extends CrudRepository<User,String> {
       List<User> findAll();
       int deleteByStudentNumber(User user);
+      List<User> findByStudentNumber(String StudentNumber);
 
       @Transactional
       @Modifying

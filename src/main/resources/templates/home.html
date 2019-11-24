@@ -103,6 +103,13 @@
             <legend>用户管理</legend>
         </fieldset>
 
+        <div class="demoTable">
+            搜索学号：
+            <div class="layui-inline">
+                <input class="layui-input" name="id" id="demoReload" autocomplete="off">
+            </div>
+            <button class="layui-btn" data-type="reload">搜索</button>
+        </div>
 
         <table class="layui-hide" id="demo" lay-filter="test"></table>
 
@@ -143,12 +150,12 @@
             //执行一个 table 实例
             table.render({
                 elem: '#demo'
-                , height: 650
-                , url: '/home/userjson' //数据接口
+              //  , height: 650
+                , url: '/home/userjson?val=' //数据接口
                 , title: '用户表'
                 , page: true //开启分页
-                , limits: [20, 30, 40]
-                , limit: 20 //每页默认显示的数量
+              //  , limits: [20, 30, 40]
+              //   , limit: 20 //每页默认显示的数量
                 , toolbar: 'default' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
                 , totalRow: false //开启合计行
                 , cols: [[ //表头
@@ -165,6 +172,30 @@
                     , {field: 'wealth', title: '财富', width: 80, sort: true, totalRow: true}
                     , {fixed: 'right', width: 200, align: 'center', toolbar: '#barDemo'}
                 ]], id: 'testReload'
+            });
+
+
+
+            var $ = layui.$, active = {
+                reload: function(){
+                    var demoReload = $('#demoReload');
+                    //执行重载
+                    table.reload('testReload', {
+                        page: {
+                            curr: 1 //重新从第 1 页开始
+                        }
+                        ,url: '/home/userjson?val='+demoReload.val()
+                        // ,where: {
+                        //     key: {
+                        //        studentNumber: demoReload.val()
+                        //     }
+                        // }
+                    }, 'data');
+                }
+            };
+            $('.demoTable .layui-btn').on('click', function(){
+                var type = $(this).data('type');
+                active[type] ? active[type].call(this) : '';
             });
 
             //监听头工具栏事件
@@ -229,6 +260,7 @@
                 }
             });
         });
+
     </script>
 
     <script>

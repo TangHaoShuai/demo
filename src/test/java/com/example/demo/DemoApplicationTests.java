@@ -17,12 +17,13 @@ class DemoApplicationTests {
 
     @Test
     void contextLoads() {
-        User user = new User();
-
-        user.setPassWord("123");
-        user.setPhone("15778676033");
-        user.setSex("女");
-        userRepository.save(user);
+//        User user = new User();
+//        user.setPassWord("123");
+//        user.setPhone("15778676033");
+//        user.setSex("女");
+//        userRepository.save(user);
+            List<User> users = userRepository.findByStudentNumber("2015456");
+        System.out.printf(users.toString());
     }
     @Test
     void inquire(){

@@ -1,38 +1,38 @@
 {
   "code": 0
   ,"msg": ""
-  ,"count": 13
+  ,"count": 3
   ,"data": [{
-"id": "10005"
-,"studentNumber": "20170313015"
+"id": "10305"
+,"studentNumber": "201703130152"
 ,"phone": "157786761033"
 ,"username": "杜甫"
 ,"email": "xianxin@layui.com"
 ,"sex": "男"
 ,"city": "浙江杭州"
-,"sign": "鼠标移动到此处，可以通过点击单元格右侧的下拉图标，查看到被隐藏的全部内容。"
+,"sign": "鼠标移动到此处，可以通过点侧的下拉图标，查看到被的全部内容。"
 ,"classify": "学生"
 ,"wealth": "500"
 },{
-  "id": "10005"
-,"studentNumber": "20170313015"
+  "id": "102205"
+,"studentNumber": "201703130155"
 ,"phone": "157786761033"
 ,"username": "杜甫"
 ,"email": "xianxin@layui.com"
 ,"sex": "男"
 ,"city": "浙江杭州"
-,"sign": "鼠标移动到此处，可以通过点击单元格右侧的下拉图标，查看到被隐藏的全部内容。"
+,"sign": "鼠标移动到此处，可以通过点击单元图标，查看到被隐藏的全部内容。"
 ,"classify": "学生"
 ,"wealth": "500"
 },{
-  "id": "10005"
-,"studentNumber": "20170313015"
+  "id": "100205"
+,"studentNumber": "201703130153"
 ,"phone": "157786761033"
 ,"username": "杜甫"
 ,"email": "xianxin@layui.com"
 ,"sex": "男"
 ,"city": "浙江杭州"
-,"sign": "鼠标移动到此处，可以通过点击单元格右侧的下拉图标，查看到被隐藏的全部内容。"
+,"sign": "鼠标移动到此处，可以通查看到被隐藏的全部内容。"
 ,"classify": "学生"
 ,"wealth": "500"
 }]
