@@ -3,6 +3,7 @@ package com.example.demo.controller;
 
 import com.example.demo.dao.ExerciseRepository;
 import com.example.demo.model.Exercise;
+import com.example.demo.model.TestPaper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +23,7 @@ public class ExerciseController {
     private ExerciseRepository exerciseRepository;
 
     @ResponseBody
-    @PostMapping("/AddTestpaper")
+    @PostMapping("/AddExercise")
     public Map<String, String> AddTestpaper(Exercise exercise){
         Map<String, String> map = new HashMap<>();
         if(exercise.getQuestion() == "" || exercise.getTid() == "" || exercise.getAnswer() == "" || exercise.getItem1() == ""
@@ -68,6 +69,38 @@ public class ExerciseController {
         map.put("data",list);
         return map;
     }
+
+
+    @ResponseBody
+    @PostMapping("/updateExercise")
+    public  Map<String,String> TestPagerJson(Exercise exercise){
+        Map<String, String> map = new HashMap<>();
+        if(exercise.getQuestion() == "" || exercise.getTid() == "" || exercise.getAnswer() == "" || exercise.getItem1() == ""
+                || exercise.getItem2() == "" || exercise.getItem3() == "" || exercise.getItem4() == "" || exercise.getExplains() == ""
+                || exercise.getUrl() == "") {
+            map.put("name","修改失败内容不能为空");
+        }else{
+            exerciseRepository.updateExercise(exercise.getTid(),exercise.getQuestion(),exercise.getAnswer(),
+                    exercise.getItem1(),exercise.getItem2(),exercise.getItem3(),exercise.getItem4(),
+                    exercise.getExplains(),exercise.getUrl());
+            map.put("name","修改修改成功");
+        }
+        return map;
+    }
+
+    @ResponseBody
+    @PostMapping("deleteExercise")
+    public Map<String,String> deleteExercise(Exercise exercise){
+        Map<String, String> map = new HashMap<>();
+        if (exercise.getTid() == ""){
+            map.put("name","编号不可以为空");
+        }else{
+            exerciseRepository.deleteExercise(exercise.getTid());
+            map.put("name","删除成功");
+        }
+        return map;
+    }
+
 
 
 

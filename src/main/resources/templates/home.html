@@ -108,7 +108,7 @@
             <table class="layui-hide" id="demo3" lay-filter="test3"></table>
         </div>
 
-<!--    题目盒子 默认隐藏    -->
+<!--             题目盒子 默认隐藏    -->
         <div id="ExerciseDiv" style="display: none;">
             <div class="demoTable">
                 搜索编号：
@@ -239,7 +239,7 @@
             });
 
             //监听头工具栏事件
-            table.on('toolbar(test2)', function (obj) {
+            table.on('toolbar(test3)', function (obj) {
                 var checkStatus = table.checkStatus(obj.config.id)
                     , data = checkStatus.data; //获取选中的数据
                 switch (obj.event) {
@@ -276,20 +276,18 @@
                 } else if (layEvent === 'del') {
                     layer.confirm('真的删除行么', function (index) {
                         //向服务端发送删除指令
-                        deleteUser("/home/deleteUser", data.studentNumber);
+                        deleteTestPager("/home/deleteTestPager", data.tid);
                         obj.del(); //删除对应行（tr）的DOM结构
                         layer.close(index);
                     });
                 } else if (layEvent === 'edit') {
                     layer.msg('编辑操作');
                     //在这里面输入任何合法的js语句
-                    PopoutTestPager("updateUser", "更新信息", data.studentNumber, "readonly=\"readonly\"", "update")
+                    PopoutTestPager("updateTestPager", "更新信息", data.tid, "readonly=\"readonly\"", "update")
                 } else if (layEvent == "reload") {
                     layer.msg('重载');
-                    // window.location.href="/home/home";
-                    //   var demoReload = $('#demoReload');
                     //执行重载
-                    table.reload('testReload', {
+                    table.reload('testReload4', {
                         page: {
                             curr: 1 //重新从第 1 页开始
                         }
@@ -376,7 +374,7 @@
                 switch (obj.event) {
                     case 'add':
                         layer.msg('添加');
-                        Popout("/home/AddUser", "添加信息", "", "", "")
+                        PopoutExercise("/home/AddExercise", "添加信息", "", "", "")
                         break;
                     case 'update':
                         if (data.length === 0) {
@@ -407,7 +405,7 @@
                 } else if (layEvent === 'del') {
                     layer.confirm('真的删除行么', function (index) {
                         //向服务端发送删除指令
-                        deleteUser("/home/deleteUser", data.studentNumber);
+                        deleteExercise("/home/deleteExercise", data.tid);
                         obj.del(); //删除对应行（tr）的DOM结构
                         layer.close(index);
 
@@ -415,7 +413,7 @@
                 } else if (layEvent === 'edit') {
                     layer.msg('编辑操作');
                     //在这里面输入任何合法的js语句
-                    Popout("updateUser", "更新信息", data.studentNumber, "readonly=\"readonly\"", "update")
+                    PopoutExercise("updateExercise", "更新信息", data.tid, "readonly=\"readonly\"", "update")
                 } else if (layEvent == "reload") {
                     layer.msg('重载');
                     // window.location.href="/home/home";
@@ -656,11 +654,10 @@
             });
         }
 
-
         //封装起来的弹框TestPager
         function PopoutTestPager(MzzURL, title, tid, mzzStyle, identifying) {
             if (tid == "") {
-                tid = "输入新的学号"
+                tid = "输入新的试卷编号"
             }
             layer.open({
                 type: 1 //Page层类型
@@ -669,29 +666,108 @@
                 , shade: 0.6 //遮罩透明度
                 , maxmin: true //允许全屏最小化
                 , anim: 1 //0-6的动画形式，-1不开启
-                , content: '<form class="layui-form" id="form11" action="#" method ="Post">\n' +
+                , content: '<form class="layui-form" id="formTestPager" action="#" method ="Post">\n' +
                     '  <div class="layui-form-item">\n' +
                     '    <label class="layui-form-label">试卷编号</label>\n' +
                     '    <div class="layui-input-block">\n' +
-                    '      <input type="text" value="' + tid + ' " name="tid" lay-verify="required" lay-reqtext="学号是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input" ' + mzzStyle + '>\n' +
+                    '      <input type="text" value="' + tid + ' " name="tid" lay-verify="required" lay-reqtext="试卷是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input" ' + mzzStyle + '>\n' +
                     '    </div>\n' +
                     '  </div>\n' +
                     '  <div class="layui-form-item">\n' +
                     '    <label class="layui-form-label">试卷名字</label>\n' +
                     '    <div class="layui-input-block">\n' +
-                    '      <input type="text" name="tname" lay-verify="required" lay-reqtext="用户名是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">\n' +
+                    '      <input type="text" name="tname" lay-verify="required" lay-reqtext="试卷名是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">\n' +
                     '    </div>\n' +
                     '  </div>\n' +
                     '  ' +
                     '  <div class="layui-form-item">\n' +
                     '    <label class="layui-form-label">说明</label>\n' +
                     '    <div class="layui-input-block">\n' +
-                    '      <input type="text" name="introduce" lay-verify="required" lay-reqtext="邮箱是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">\n' +
+                    '      <input type="text" name="introduce" lay-verify="required" lay-reqtext="说明是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">\n' +
                     '    </div>\n' +
                     '  </div>\n' +
                     '  <div class="layui-form-item">\n' +
                     '    <div class="layui-input-block">\n' +
-                    '      <button type="button" onclick=mzzSubmit("' + MzzURL + '","' + identifying + '") class="layui-btn"   lay-submit="" lay-filter="demo1">立即提交</button>\n' +
+                    '      <button type="button" onclick=TestPagerSubmit("' + MzzURL + '","' + identifying + '") class="layui-btn"   lay-submit="" lay-filter="demo1">立即提交</button>\n' +
+                    '      <button type="reset"  class="layui-btn layui-btn-primary">重置</button>\n' +
+                    '    </div>\n' +
+                    '  </div>\n' +
+                    '</form>'
+            });
+        }
+
+        //封装起来的弹框Exercise
+        function PopoutExercise(MzzURL, title, tid, mzzStyle, identifying) {
+            if (tid == "") {
+                tid = "输入新的试卷编号"
+            }
+            layer.open({
+                type: 1 //Page层类型
+                , area: ['500px', '300px']
+                , title: title + tid
+                , shade: 0.6 //遮罩透明度
+                , maxmin: true //允许全屏最小化
+                , anim: 1 //0-6的动画形式，-1不开启
+                , content: '<form class="layui-form" id="formExercise" action="#" method ="Post">\n' +
+                    '  <div class="layui-form-item">\n' +
+                    '    <label class="layui-form-label">试题编号</label>\n' +
+                    '    <div class="layui-input-block">\n' +
+                    '      <input type="text" value="' + tid + ' " name="tid" lay-verify="required" lay-reqtext="试卷是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input" ' + mzzStyle + '>\n' +
+                    '    </div>\n' +
+                    '  </div>\n' +
+                    '  <div class="layui-form-item">\n' +
+                    '    <label class="layui-form-label">问题</label>\n' +
+                    '    <div class="layui-input-block">\n' +
+                    '      <input type="text" name="question" lay-verify="required" lay-reqtext="试卷名是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">\n' +
+                    '    </div>\n' +
+                    '  </div>\n' +
+                    '  ' +
+                    '  <div class="layui-form-item">\n' +
+                    '    <label class="layui-form-label">答案</label>\n' +
+                    '    <div class="layui-input-block">\n' +
+                    '      <input type="text" name="answer" lay-verify="required" lay-reqtext="说明是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">\n' +
+                    '    </div>\n' +
+                    '  </div>\n' +
+                    '  <div class="layui-form-item">\n' +
+                    '    <label class="layui-form-label">选项A</label>\n' +
+                    '    <div class="layui-input-block">\n' +
+                    '      <input type="text" name="item1" lay-verify="required" lay-reqtext="说明是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">\n' +
+                    '    </div>\n' +
+                    '  </div>\n' +
+                    '  <div class="layui-form-item">\n' +
+                    '    <label class="layui-form-label">选项B</label>\n' +
+                    '    <div class="layui-input-block">\n' +
+                    '      <input type="text" name="item2" lay-verify="required" lay-reqtext="说明是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">\n' +
+                    '    </div>\n' +
+                    '  </div>\n' +
+                    '  <div class="layui-form-item">\n' +
+                    '    <label class="layui-form-label">选项C</label>\n' +
+                    '    <div class="layui-input-block">\n' +
+                    '      <input type="text" name="item3" lay-verify="required" lay-reqtext="说明是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">\n' +
+                    '    </div>\n' +
+                    '  </div>\n' +
+                    '  <div class="layui-form-item">\n' +
+                    '    <label class="layui-form-label">选项D</label>\n' +
+                    '    <div class="layui-input-block">\n' +
+                    '      <input type="text" name="item4" lay-verify="required" lay-reqtext="说明是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">\n' +
+                    '    </div>\n' +
+                    '  </div>\n' +
+                    '  <div class="layui-form-item">\n' +
+                    '    <label class="layui-form-label">解析</label>\n' +
+                    '    <div class="layui-input-block">\n' +
+                    '      <input type="text" name="explains" lay-verify="required" lay-reqtext="说明是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">\n' +
+                    '    </div>\n' +
+                    '  </div>\n' +
+                    '  <div class="layui-form-item">\n' +
+                    '    <label class="layui-form-label">图片URL</label>\n' +
+                    '    <div class="layui-input-block">\n' +
+                    '      <input type="text" name="url" lay-verify="required" lay-reqtext="说明是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">\n' +
+                    '    </div>\n' +
+                    '  </div>\n' +
+
+                    '  <div class="layui-form-item">\n' +
+                    '    <div class="layui-input-block">\n' +
+                    '      <button type="button" onclick=ExerciseSubmit("' + MzzURL + '","' + identifying + '") class="layui-btn"   lay-submit="" lay-filter="demo1">立即提交</button>\n' +
                     '      <button type="reset"  class="layui-btn layui-btn-primary">重置</button>\n' +
                     '    </div>\n' +
                     '  </div>\n' +
@@ -750,11 +826,118 @@
                 }
             });
         }
+
+
+        ///  TestPager 添加 和 修改 Ajax
+        function TestPagerSubmit(MzzURL, mzzStyle) {
+            if (mzzStyle.length > 0) {
+                $.ajax({
+                    //几个参数需要注意一下
+                    type: "POST",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: MzzURL,//url
+                    data: $('#formTestPager').serialize(),
+                    success: function (data) {
+                        console.log(data.name);//打印服务端返回的数据(调试用)
+                        alert(data.name);
+                    },
+                    error: function () {
+                        alert("异常！");
+                    }
+                });
+            } else {
+                $.ajax({
+                    //几个参数需要注意一下
+                    type: "POST",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: MzzURL,//url
+                    data: $('#formTestPager').serialize(),
+                    success: function (data) {
+                        console.log(data.name);//打印服务端返回的数据(调试用)
+                        alert(data.name);
+                    },
+                    error: function () {
+                        alert("异常！");
+                    }
+                });
+            }
+        }
+        ///  TestPager 删除
+        function deleteTestPager(MzzURL, tid) {
+            $.ajax({
+                //几个参数需要注意一下
+                type: "POST",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: MzzURL,//url
+                data: {"tid": tid},
+                success: function (data) {
+                    console.log(data.name);//打印服务端返回的数据(调试用)
+                    alert(data.name);
+                },
+                error: function () {
+                    alert("异常！");
+                }
+            });
+        }
+
+        ///  Exercise 添加 和 修改 Ajax
+        function ExerciseSubmit(MzzURL, mzzStyle) {
+            if (mzzStyle.length > 0) {
+                $.ajax({
+                    //几个参数需要注意一下
+                    type: "POST",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: MzzURL,//url
+                    data: $('#formExercise').serialize(),
+                    success: function (data) {
+                        console.log(data.name);//打印服务端返回的数据(调试用)
+                        alert(data.name);
+                    },
+                    error: function () {
+                        alert("异常！");
+                    }
+                });
+            } else {
+                $.ajax({
+                    //几个参数需要注意一下
+                    type: "POST",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: MzzURL,//url
+                    data: $('#formExercise').serialize(),
+                    success: function (data) {
+                        console.log(data.name);//打印服务端返回的数据(调试用)
+                        alert(data.name);
+                    },
+                    error: function () {
+                        alert("异常！");
+                    }
+                });
+            }
+        }
+        ///  Exercise 删除
+        function deleteExercise(MzzURL, tid) {
+            $.ajax({
+                //几个参数需要注意一下
+                type: "POST",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: MzzURL,//url
+                data: {"tid": tid},
+                success: function (data) {
+                    console.log(data.name);//打印服务端返回的数据(调试用)
+                    alert(data.name);
+                },
+                error: function () {
+                    alert("异常！");
+                }
+            });
+        }
+
+
     </script>
 
 
     <script>
-        // 考试管理
+
         function Exam() {
             document.getElementById("home").style.display = "none";//隐藏首页
             document.getElementById("examinationPaper").style.display = "none";//隐藏试卷页面
@@ -782,13 +965,12 @@
         function examination () {
             document.getElementById("TestPaperDiv").style.display = "none";
             document.getElementById("ExerciseDiv").style.display = "";
-
         }
+
         // 显示试卷盒子
         function examination () {
             document.getElementById("TestPaperDiv").style.display = "none";//显示试题盒子
             document.getElementById("ExerciseDiv").style.display = "";//隐藏试卷盒子
-
         }
 
         // 解析：将你嵌入页面的高度设置成屏幕可视高度减去原框架顶部和底部高度（宽度设置同理）。

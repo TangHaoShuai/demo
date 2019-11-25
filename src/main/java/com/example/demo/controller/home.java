@@ -72,10 +72,13 @@ public class home {
     @PostMapping("/deleteUser")
     @ResponseBody
     public  Map<String, String> deleteUser(User user){
-        userRepository.delUser(user.getStudentNumber());
         Map<String, String> map = new HashMap<>();
-        map.put("name","删除成功");
-
+        if (user.getStudentNumber() == ""){
+            map.put("name","学号不可以为空");
+        }else{
+            userRepository.delUser(user.getStudentNumber());
+            map.put("name","删除成功");
+        }
         return map;
     }
 

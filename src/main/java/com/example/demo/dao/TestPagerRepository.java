@@ -16,14 +16,14 @@ public interface TestPagerRepository extends CrudRepository<TestPaper,String> {
 
     List<TestPaper> findByTid(String val);
 
-//    @Transactional
-//    @Modifying
-//    @Query("update TestPaper u set u.tname = ?2, u.introduce = ?3 where u.tid = ?1")
-//    int updateTestPaper(String tid, String username , String  introduce);
-//
-//    @Transactional
-//    @Modifying
-//    @Query(value = "delete from TestPaper where studentNumber =?1")
-//    int delTestPaper(String tid);
+    @Transactional
+    @Modifying
+    @Query("update TestPaper u set u.tname = ?2, u.introduce = ?3 where u.tid = ?1")
+    int updateTestPaper(String tid, String tname , String  introduce);
+
+    @Transactional
+    @Modifying
+    @Query(value = "delete from TestPaper where tid =?1")
+    int deleteTestPager(String tid);
 
 }

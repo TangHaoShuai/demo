@@ -7,6 +7,7 @@ import com.example.demo.model.TestPaper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -49,7 +50,7 @@ public class TestPaperController {
     }
 
     @ResponseBody
-    @GetMapping("/AddTestPager")
+    @PostMapping("/AddTestPager")
     public Map<String,String> AddTestPager(TestPaper testPaper){
         Map<String, String> map = new HashMap<>();
         if(testPaper.getTid() =="" || testPaper.getTname() =="" ||
@@ -60,6 +61,33 @@ public class TestPaperController {
             map.put("name","添加成功");
         }
         return  map;
+    }
+    @ResponseBody
+    @PostMapping("updateTestPager")
+    public Map<String,String> updateTestPager(TestPaper testPaper){
+        Map<String, String> map = new HashMap<>();
+        if(testPaper.getTid() =="" || testPaper.getTname() =="" ||
+                testPaper.getIntroduce()==""){
+            map.put("name","修改失败内容不能为空");
+        }else{
+            testPagerRepository.updateTestPaper(
+            testPaper.getTid(),testPaper.getTname(),
+                    testPaper.getIntroduce());
+            map.put("name","修改成功");
+        }
+        return  map;
+    }
+    @ResponseBody
+    @PostMapping("deleteTestPager")
+    public Map<String,String> deleteTestPager(TestPaper testPaper){
+        Map<String, String> map = new HashMap<>();
+        if (testPaper.getTid() == ""){
+            map.put("name","编号不可以为空");
+        }else{
+            testPagerRepository.deleteTestPager(testPaper.getTid());
+            map.put("name","删除成功");
+        }
+        return map;
     }
 
 
