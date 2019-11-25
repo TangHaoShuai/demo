@@ -5,9 +5,9 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "testpaper")
+@Table(name = "exercise")
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid")
-public class testPaper {
+public class Exercise {
     @Id
     @GeneratedValue(generator = "jpa-uuid")
     @Column(length = 32)
@@ -17,9 +17,11 @@ public class testPaper {
     @Column(name="tid",length = 200)
     private String tid;
 
+    ///问题
     @Column(name="question",length = 200)
     private String question;
 
+    ///答案
     @Column(name="answer",length = 200)
     private String answer;
 
@@ -35,8 +37,10 @@ public class testPaper {
     @Column(name="item4",length = 200)
     private String item4;
 
+    ///解析
     @Column(name="explains",length = 200)
     private String explains;
+
 
     @Column(name="url",length = 200)
     private String url;

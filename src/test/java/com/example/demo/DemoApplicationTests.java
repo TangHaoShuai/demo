@@ -1,12 +1,15 @@
 package com.example.demo;
 
+import com.example.demo.dao.ExerciseRepository;
+import com.example.demo.dao.TestPagerRepository;
 import com.example.demo.dao.UserRepository;
+import com.example.demo.model.Exercise;
+import com.example.demo.model.TestPaper;
 import com.example.demo.model.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootTest
@@ -14,6 +17,10 @@ class DemoApplicationTests {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private ExerciseRepository exerciseRepository;
+    @Autowired
+    private TestPagerRepository testPagerRepository;
 
     @Test
     void contextLoads() {
@@ -51,6 +58,31 @@ class DemoApplicationTests {
                ,user.getEmail(),user.getPhone(),user.getCity(),
                user.getSign(),user.getClassify(),user.getWealth(),
                user.getSex());
+
+    }
+
+    @Test
+    void  AddTestPage(){
+        Exercise exercise = new Exercise();
+        exercise.setQuestion("这个一个测试！！！！");
+        exercise.setAnswer("1");
+        exercise.setItem1("答案A");
+        exercise.setItem2("答案B");
+        exercise.setItem3("答案C");
+        exercise.setItem4("答案D");
+        exercise.setExplains("因为这是一个测试！没有对错");
+        exercise.setUrl("hemo/img");
+        exercise.setTid("50");
+        exerciseRepository.save(exercise);
+
+    }
+    @Test
+    void  AddTestPages(){
+        TestPaper testPaper = new TestPaper();
+        testPaper.setTid("232");
+        testPaper.setTname("android开发");
+        testPaper.setIntroduce("这是测试！！！！！！");
+        testPagerRepository.save(testPaper);
 
     }
 

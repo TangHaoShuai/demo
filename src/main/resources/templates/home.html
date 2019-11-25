@@ -95,17 +95,38 @@
             <legend>试卷管理</legend>
         </fieldset>
 
-        <table class="layui-hide" id="test2"></table>
 
-<!--        <script type="text/html" id="switchTpl">-->
-<!--            &lt;!&ndash; 这里的 checked 的状态只是演示 &ndash;&gt;-->
-<!--            <input type="checkbox" name="sex" value="{{d.id}}" lay-skin="switch" lay-text="女|男" lay-filter="sexDemo" {{ d.id == 10003 ? 'checked' : '' }}>-->
-<!--        </script>-->
+        <!--  试卷盒子 默认显示  -->
+        <div id="TestPaperDiv">
+            <div class="demoTable" >
+                搜索试卷编号：
+                <div class="layui-inline">
+                    <input class="layui-input" name="id" id="demoReload2" autocomplete="off">
+                </div>
+                <button class="layui-btn" data-type="reload">搜索</button>
+            </div>
+            <table class="layui-hide" id="demo3" lay-filter="test3"></table>
+        </div>
 
-        <script type="text/html" id="checkboxTpl">
-            <!-- 这里的 checked 的状态只是演示 -->
-            <input type="checkbox" name="lock" value="{{d.id}}" title="锁定" lay-filter="lockDemo" {{ d.studentNumber == 201703130152 ? 'checked' : '' }}>
-        </script>
+<!--    题目盒子 默认隐藏    -->
+        <div id="ExerciseDiv" style="display: none;">
+            <div class="demoTable">
+                搜索编号：
+                <div class="layui-inline">
+                    <input class="layui-input" name="id" id="demoReload1" autocomplete="off">
+                </div>
+                <button class="layui-btn" data-type="reload">搜索</button>
+            </div>
+            <table class="layui-hide" id="demo2" lay-filter="test2"></table>
+            <!--        <script type="text/html" id="switchTpl">-->
+            <!--            &lt;!&ndash; 这里的 checked 的状态只是演示 &ndash;&gt;-->
+            <!--            <input type="checkbox" name="sex" value="{{d.id}}" lay-skin="switch" lay-text="女|男" lay-filter="sexDemo" {{ d.id == 10003 ? 'checked' : '' }}>-->
+            <!--        </script>-->
+            <script type="text/html" id="checkboxTpl">
+                <!-- 这里的 checked 的状态只是演示 -->
+                <input type="checkbox" name="lock" value="{{d.id}}" title="锁定" lay-filter="lockDemo" {{ d.studentNumber == 201703130152 ? 'checked' : '' }}>
+            </script>
+        </div>
 
     </div>
 
@@ -140,40 +161,278 @@
 
     <script src="layui-v2.5.5/layui/layui.js"></script>
     <!--th:inline="none"-->
+
+    <!-- 试卷  TestPager -->
     <script th:inline="none">
-        layui.use('table', function(){
-            var table = layui.table
-                ,form = layui.form;
-
+        layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element', 'slider'], function () {
+            var laydate = layui.laydate //日期
+                , laypage = layui.laypage //分页
+                , layer = layui.layer //弹层
+                , table = layui.table //表格
+                , carousel = layui.carousel //轮播
+                , upload = layui.upload //上传
+                , element = layui.element //元素操作
+                , slider = layui.slider //滑块
+            //执行一个 table 实例
             table.render({
-                elem: '#test2'
-                ,url:'/home/userjson?val='
-                ,cellMinWidth: 80
-                ,cols: [[
-                    {type:'numbers'}
-                    ,{type: 'checkbox'}
-                    ,{field:'id', title:'ID', width:100, unresize: true, sort: true}
-                    ,{field:'username', title:'用户名', templet: '#usernameTpl'}
-                    ,{field:'city', title:'城市'}
-                    ,{field:'wealth', title: '财富', minWidth:120, sort: true}
-                    ,{field:'sex', title:'性别', width:85, templet: '#switchTpl', unresize: true}
-                    ,{field:'lock', title:'是否锁定', width:110, templet: '#checkboxTpl', unresize: true}
-                ]]
-                ,page: true
+                elem: '#demo3'
+                //  , height: 650
+                , url: '/home/TestPaperJson?val=' //数据接口
+                , title: '试卷表'
+                , page: true //开启分页
+                //  , limits: [20, 30, 40]
+                //   , limit: 20 //每页默认显示的数量
+                , toolbar: 'default' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
+                , totalRow: false //开启合计行
+                , cols: [[ //表头
+                    {type: 'checkbox', fixed: 'left'}
+                    , {field: 'id', title: 'ID', width: 80, fixed: 'left', totalRowText: '合计：'}
+                    , {field: 'tid', title: '试卷编号', width: 110, sort: true, totalRow: true}
+                    , {field: 'tname', title: '试卷名字', width: 200}
+                    , {field: 'introduce', title: '介绍', width: 250, totalRow: true}
+                    , {fixed: 'right', width: 200, align: 'center', toolbar: '#barDemo'}
+                ]], id: 'testReload4'
             });
 
-            //监听性别操作
-            form.on('switch(sexDemo)', function(obj){
-                layer.tips(this.value + ' ' + this.name + '：'+ obj.elem.checked, obj.othis);
+            //监听行单击事件（双击事件为：rowDouble）（单击为row）
+            table.on('rowDouble(test3)', function(obj){
+                var data = obj.data;
+                // layer.alert(JSON.stringify(data), {
+                //     title: '当前行数据：'
+                // });
+                //标注选中样式
+                // obj.tr.addClass('layui-table-click').siblings().removeClass('layui-table-click');
+                //执行重载
+                table.reload('testReload3', {
+                    page: {
+                        curr: 1 //重新从第 1 页开始
+                    }
+                    ,url: '/home/ExerciseJson?val='+data.tid
+                    // ,where: {
+                    //     key: {
+                    //        studentNumber: demoReload.val()
+                    //     }
+                    // }
+                }, 'data');
+                examination();
+            });
+            var $ = layui.$, active = {
+                reload: function(){
+                    var demoReload = $('#demoReload2');
+                    //执行重载
+                    table.reload('testReload4', {
+                        page: {
+                            curr: 1 //重新从第 1 页开始
+                        }
+                        ,url: '/home/TestPaperJson?val='+demoReload.val()
+                        // ,where: {
+                        //     key: {
+                        //        studentNumber: demoReload.val()
+                        //     }
+                        // }
+                    }, 'data');
+                }
+            };
+            $('.demoTable .layui-btn').on('click', function(){
+                var type = $(this).data('type');
+                active[type] ? active[type].call(this) : '';
             });
 
-            //监听锁定操作
-            form.on('checkbox(lockDemo)', function(obj){
-                layer.tips(this.value + ' ' + this.name + '：'+ obj.elem.checked, obj.othis);
+            //监听头工具栏事件
+            table.on('toolbar(test2)', function (obj) {
+                var checkStatus = table.checkStatus(obj.config.id)
+                    , data = checkStatus.data; //获取选中的数据
+                switch (obj.event) {
+                    case 'add':
+                        layer.msg('添加');
+                        PopoutTestPager("/home/AddTestPager", "添加试卷", "", "", "")
+                        break;
+                    case 'update':
+                        if (data.length === 0) {
+                            layer.msg('请选择一行');
+                        } else if (data.length > 1) {
+                            layer.msg('只能同时编辑一个');
+                        } else {
+                            layer.alert('编辑 [studentNumber]：' + checkStatus.data[0].studentNumber);
+                        }
+                        break;
+                    case 'delete':
+                        if (data.length === 0) {
+                            layer.msg('请选择一行');
+                        } else {
+                            layer.msg('删除');
+                        }
+                        break;
+                }
+                ;
+            });
+
+            //监听行工具事件
+            table.on('tool(test3)', function (obj) { //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+                var data = obj.data //获得当前行数据
+                    , layEvent = obj.event; //获得 lay-event 对应的值
+                if (layEvent === 'detail') {
+                    layer.msg('查看操作' + data.id);
+                } else if (layEvent === 'del') {
+                    layer.confirm('真的删除行么', function (index) {
+                        //向服务端发送删除指令
+                        deleteUser("/home/deleteUser", data.studentNumber);
+                        obj.del(); //删除对应行（tr）的DOM结构
+                        layer.close(index);
+                    });
+                } else if (layEvent === 'edit') {
+                    layer.msg('编辑操作');
+                    //在这里面输入任何合法的js语句
+                    PopoutTestPager("updateUser", "更新信息", data.studentNumber, "readonly=\"readonly\"", "update")
+                } else if (layEvent == "reload") {
+                    layer.msg('重载');
+                    // window.location.href="/home/home";
+                    //   var demoReload = $('#demoReload');
+                    //执行重载
+                    table.reload('testReload', {
+                        page: {
+                            curr: 1 //重新从第 1 页开始
+                        }
+                    }, 'data');
+                }
             });
         });
     </script>
-    <!-- 表单 -->
+
+
+    <!-- 试题  Exercise -->
+    <script th:inline="none">
+        layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element', 'slider'], function () {
+            var laydate = layui.laydate //日期
+                , laypage = layui.laypage //分页
+                , layer = layui.layer //弹层
+                , table = layui.table //表格
+                , carousel = layui.carousel //轮播
+                , upload = layui.upload //上传
+                , element = layui.element //元素操作
+                , slider = layui.slider //滑块
+            //执行一个 table 实例
+            table.render({
+                elem: '#demo2'
+                //  , height: 650
+                , url: '/home/ExerciseJson?val=' //数据接口
+                , title: '试卷表'
+                , page: true //开启分页
+                //  , limits: [20, 30, 40]
+                //   , limit: 20 //每页默认显示的数量
+                , toolbar: 'default' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
+                , totalRow: false //开启合计行
+                , cols: [[ //表头
+                    {type: 'checkbox', fixed: 'left'}
+                    , {field: 'id', title: 'ID', width: 80, fixed: 'left', totalRowText: '合计：'}
+                    , {field: 'tid', title: '题目编号', width: 110, sort: true, totalRow: true}
+                    , {field: 'question', title: '问题', width: 200}
+                    , {field: 'answer', title: '正确回答', width: 80, totalRow: true}
+                    , {field: 'item1', title: '选项A', width: 80}
+                    , {field: 'item2', title: '选项B', width: 80}
+                    , {field: 'item3', title: '选项C', width: 80}
+                    , {field: 'item4', title: '选项D', width: 80}
+                    , {field: 'explains', title: '解析', width: 250}
+                    , {field: 'url', title: '图片URL', width: 120, sort: true, totalRow: true}
+                    , {fixed: 'right', width: 200, align: 'center', toolbar: '#barDemo'}
+                ]], id: 'testReload3'
+            });
+            //监听行单击事件（双击事件为：rowDouble）
+            // table.on('row(test2)', function(obj){
+            //     var data = obj.data;
+            //     layer.alert(JSON.stringify(data), {
+            //         title: '当前行数据：'
+            //     });
+            //     //标注选中样式
+            //     obj.tr.addClass('layui-table-click').siblings().removeClass('layui-table-click');
+            // });
+
+            var $ = layui.$, active = {
+                reload: function(){
+                    var demoReload = $('#demoReload1');
+                    //执行重载
+                    table.reload('testReload3', {
+                        page: {
+                            curr: 1 //重新从第 1 页开始
+                        }
+                        ,url: '/home/ExerciseJson?val='+demoReload.val()
+                        // ,where: {
+                        //     key: {
+                        //        studentNumber: demoReload.val()
+                        //     }
+                        // }
+                    }, 'data');
+                }
+            };
+            $('.demoTable .layui-btn').on('click', function(){
+                var type = $(this).data('type');
+                active[type] ? active[type].call(this) : '';
+            });
+
+            //监听头工具栏事件
+            table.on('toolbar(test2)', function (obj) {
+                var checkStatus = table.checkStatus(obj.config.id)
+                    , data = checkStatus.data; //获取选中的数据
+                switch (obj.event) {
+                    case 'add':
+                        layer.msg('添加');
+                        Popout("/home/AddUser", "添加信息", "", "", "")
+                        break;
+                    case 'update':
+                        if (data.length === 0) {
+                            layer.msg('请选择一行');
+                        } else if (data.length > 1) {
+                            layer.msg('只能同时编辑一个');
+                        } else {
+                            layer.alert('编辑 [studentNumber]：' + checkStatus.data[0].studentNumber);
+                        }
+                        break;
+                    case 'delete':
+                        if (data.length === 0) {
+                            layer.msg('请选择一行');
+                        } else {
+                            layer.msg('删除');
+                        }
+                        break;
+                }
+                ;
+            });
+
+            //监听行工具事件
+            table.on('tool(test2)', function (obj) { //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+                var data = obj.data //获得当前行数据
+                    , layEvent = obj.event; //获得 lay-event 对应的值
+                if (layEvent === 'detail') {
+                    layer.msg('查看操作' + data.id);
+                } else if (layEvent === 'del') {
+                    layer.confirm('真的删除行么', function (index) {
+                        //向服务端发送删除指令
+                        deleteUser("/home/deleteUser", data.studentNumber);
+                        obj.del(); //删除对应行（tr）的DOM结构
+                        layer.close(index);
+
+                    });
+                } else if (layEvent === 'edit') {
+                    layer.msg('编辑操作');
+                    //在这里面输入任何合法的js语句
+                    Popout("updateUser", "更新信息", data.studentNumber, "readonly=\"readonly\"", "update")
+                } else if (layEvent == "reload") {
+                    layer.msg('重载');
+                    // window.location.href="/home/home";
+                    //   var demoReload = $('#demoReload');
+                    //执行重载
+                    table.reload('testReload', {
+                        page: {
+                            curr: 1 //重新从第 1 页开始
+                        }
+                    }, 'data');
+                }
+            });
+        });
+    </script>
+
+
+    <!-- 表单  User -->
     <script th:inline="none">
         layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element', 'slider'], function () {
             var laydate = layui.laydate //日期
@@ -308,8 +567,9 @@
 
     </script>
 
+    <!--   封装起来的弹框-->
     <script>
-        //封装起来的弹框
+        //封装起来的弹框User
         function Popout(MzzURL, title, studentNumber, mzzStyle, identifying) {
             if (studentNumber == "") {
                 studentNumber = "输入新的学号"
@@ -395,9 +655,52 @@
                     '</form>'
             });
         }
-        ///添加 和 修改 Ajax
-        function mzzSubmit(MzzURL, mzzStyle) {
 
+
+        //封装起来的弹框TestPager
+        function PopoutTestPager(MzzURL, title, tid, mzzStyle, identifying) {
+            if (tid == "") {
+                tid = "输入新的学号"
+            }
+            layer.open({
+                type: 1 //Page层类型
+                , area: ['500px', '300px']
+                , title: title + tid
+                , shade: 0.6 //遮罩透明度
+                , maxmin: true //允许全屏最小化
+                , anim: 1 //0-6的动画形式，-1不开启
+                , content: '<form class="layui-form" id="form11" action="#" method ="Post">\n' +
+                    '  <div class="layui-form-item">\n' +
+                    '    <label class="layui-form-label">试卷编号</label>\n' +
+                    '    <div class="layui-input-block">\n' +
+                    '      <input type="text" value="' + tid + ' " name="tid" lay-verify="required" lay-reqtext="学号是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input" ' + mzzStyle + '>\n' +
+                    '    </div>\n' +
+                    '  </div>\n' +
+                    '  <div class="layui-form-item">\n' +
+                    '    <label class="layui-form-label">试卷名字</label>\n' +
+                    '    <div class="layui-input-block">\n' +
+                    '      <input type="text" name="tname" lay-verify="required" lay-reqtext="用户名是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">\n' +
+                    '    </div>\n' +
+                    '  </div>\n' +
+                    '  ' +
+                    '  <div class="layui-form-item">\n' +
+                    '    <label class="layui-form-label">说明</label>\n' +
+                    '    <div class="layui-input-block">\n' +
+                    '      <input type="text" name="introduce" lay-verify="required" lay-reqtext="邮箱是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">\n' +
+                    '    </div>\n' +
+                    '  </div>\n' +
+                    '  <div class="layui-form-item">\n' +
+                    '    <div class="layui-input-block">\n' +
+                    '      <button type="button" onclick=mzzSubmit("' + MzzURL + '","' + identifying + '") class="layui-btn"   lay-submit="" lay-filter="demo1">立即提交</button>\n' +
+                    '      <button type="reset"  class="layui-btn layui-btn-primary">重置</button>\n' +
+                    '    </div>\n' +
+                    '  </div>\n' +
+                    '</form>'
+            });
+        }
+
+        /// User 添加 和 修改 Ajax
+        function mzzSubmit(MzzURL, mzzStyle) {
             if (mzzStyle.length > 0) {
                 $.ajax({
                     //几个参数需要注意一下
@@ -430,8 +733,7 @@
                 });
             }
         }
-
-        //删除的Ajax
+        //  User 删除的Ajax
         function deleteUser(MzzURL, studentNumber) {
             $.ajax({
                 //几个参数需要注意一下
@@ -474,6 +776,19 @@
             document.getElementById("examinationPaper").style.display = "none";//隐藏试卷页面
             document.getElementById("useraDministration").style.display = "";//显示用户
             document.getElementById("exam").style.display = "none";//隐藏考试盒子
+        }
+
+        // 显示试卷盒子
+        function examination () {
+            document.getElementById("TestPaperDiv").style.display = "none";
+            document.getElementById("ExerciseDiv").style.display = "";
+
+        }
+        // 显示试卷盒子
+        function examination () {
+            document.getElementById("TestPaperDiv").style.display = "none";//显示试题盒子
+            document.getElementById("ExerciseDiv").style.display = "";//隐藏试卷盒子
+
         }
 
         // 解析：将你嵌入页面的高度设置成屏幕可视高度减去原框架顶部和底部高度（宽度设置同理）。
