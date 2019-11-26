@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 
+import com.example.demo.dao.ExerciseRepository;
 import com.example.demo.dao.TestPagerRepository;
 import com.example.demo.model.Exercise;
 import com.example.demo.model.TestPaper;
@@ -22,6 +23,9 @@ public class TestPaperController {
 
     @Autowired
     private TestPagerRepository testPagerRepository;
+
+    @Autowired
+    private ExerciseRepository exerciseRepository;
 
     @ResponseBody
     @GetMapping("/TestPaperJson")
@@ -84,6 +88,10 @@ public class TestPaperController {
         if (testPaper.getTid() == ""){
             map.put("name","编号不可以为空");
         }else{
+            List<Exercise> exercises = exerciseRepository.findBySid(testPaper.getTid());
+            for (int i=0 ; i<exercises.size() ; i++){
+                exerciseRepository.deleteExercise(exercises.get(i).getTid());
+            }
             testPagerRepository.deleteTestPager(testPaper.getTid());
             map.put("name","删除成功");
         }

@@ -26,4 +26,5 @@ public interface ExerciseRepository extends CrudRepository<Exercise,String>  {
     @Modifying
     @Query(value = "delete from Exercise where tid =?1")
     int deleteExercise(String tid);
+
 }

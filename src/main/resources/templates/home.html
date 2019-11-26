@@ -358,19 +358,24 @@
                     var demoReloadVar = demoReload.val();
                     if (demoReloadVar == "" || demoReloadVar == null){
                         demoReloadVar = TestPagerVar;
+                        //执行重载
+                        table.reload('testReload3', {
+                            page: {
+                                curr: 1 //重新从第 1 页开始
+                            }
+                            ,url: '/home/ExerciseJson?val='+demoReloadVar
+
+                        }, 'data');
+                    } else{
+                        //执行重载
+                        table.reload('testReload3', {
+                            page: {
+                                curr: 1 //重新从第 1 页开始
+                            }
+                            ,url: '/home/GetExerciseJson?val='+demoReloadVar
+                        }, 'data');
                     }
-                    //执行重载
-                    table.reload('testReload3', {
-                        page: {
-                            curr: 1 //重新从第 1 页开始
-                        }
-                        ,url: '/home/ExerciseJson?val='+demoReloadVar
-                        // ,where: {
-                        //     key: {
-                        //        studentNumber: demoReload.val()
-                        //     }
-                        // }
-                    }, 'data');
+
                 }
             };
             $('.demoTable .layui-btn').on('click', function(){
@@ -422,7 +427,7 @@
                 } else if (layEvent === 'edit') {
                     layer.msg('编辑操作');
                     //在这里面输入任何合法的js语句
-                    PopoutExercise("updateExercise", "更新信息", data.sid, "readonly=\"readonly\"", "update")
+                    PopoutExercise("updateExercise", "更新信息", data.tid, "readonly=\"readonly\"", "update")
                 } else if (layEvent == "reload") {
                     layer.msg('重载');
                     // window.location.href="/home/home";
@@ -718,15 +723,9 @@
                 , anim: 1 //0-6的动画形式，-1不开启
                 , content: '<form class="layui-form" id="formExercise" action="#" method ="Post">\n' +
                     '  <div class="layui-form-item">\n' +
-                    '    <label class="layui-form-label">试卷编号</label>\n' +
-                    '    <div class="layui-input-block">\n' +
-                    '      <input type="text" value="' + tid + ' " name="sid" lay-verify="required" lay-reqtext="试卷是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input" ' + mzzStyle + '>\n' +
-                    '    </div>\n' +
-                    '  </div>\n' +
-                    '  <div class="layui-form-item">\n' +
                     '    <label class="layui-form-label">习题编号</label>\n' +
                     '    <div class="layui-input-block">\n' +
-                    '      <input type="text"  name="tid" lay-verify="required" lay-reqtext="试卷是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input" >\n' +
+                    '      <input type="text" value="' + tid + ' " name="tid" lay-verify="required" lay-reqtext="试卷是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input" ' + mzzStyle + '>\n' +
                     '    </div>\n' +
                     '  </div>\n' +
                     '  <div class="layui-form-item">\n' +
@@ -778,7 +777,6 @@
                     '      <input type="text" name="url" lay-verify="required" lay-reqtext="说明是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">\n' +
                     '    </div>\n' +
                     '  </div>\n' +
-
                     '  <div class="layui-form-item">\n' +
                     '    <div class="layui-input-block">\n' +
                     '      <button type="button" onclick=ExerciseSubmit("' + MzzURL + '","' + identifying + '") class="layui-btn"   lay-submit="" lay-filter="demo1">立即提交</button>\n' +
