@@ -13,7 +13,11 @@ public class Exercise {
     @Column(length = 32)
     private String uid;
 
+    ///试卷id
+    @Column(name="sid",length = 200)
+    private String sid;
 
+    ///习题id
     @Column(name="tid",length = 200)
     private String tid;
 
@@ -45,12 +49,21 @@ public class Exercise {
     @Column(name="url",length = 200)
     private String url;
 
+
     public String getUid() {
         return uid;
     }
 
     public void setUid(String uid) {
         this.uid = uid;
+    }
+
+    public String getSid() {
+        return sid;
+    }
+
+    public void setSid(String sid) {
+        this.sid = sid;
     }
 
     public String getTid() {
@@ -127,8 +140,9 @@ public class Exercise {
 
     @Override
     public String toString() {
-        return "testPaper{" +
+        return "Exercise{" +
                 "uid='" + uid + '\'' +
+                ", sid='" + sid + '\'' +
                 ", tid='" + tid + '\'' +
                 ", question='" + question + '\'' +
                 ", answer='" + answer + '\'' +

@@ -90,14 +90,14 @@
 
     <!--    试卷管理得盒子-->
     <div id="examinationPaper" class="layui-body" style="display: none;">
+
+        <!--  试卷盒子 默认显示  -->
+        <div id="TestPaperDiv">
         <!-- 内容主体区域 -->
         <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
             <legend>试卷管理</legend>
         </fieldset>
 
-
-        <!--  试卷盒子 默认显示  -->
-        <div id="TestPaperDiv">
             <div class="demoTable" >
                 搜索试卷编号：
                 <div class="layui-inline">
@@ -110,6 +110,11 @@
 
 <!--             题目盒子 默认隐藏    -->
         <div id="ExerciseDiv" style="display: none;">
+            <!-- 内容主体区域 -->
+            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+                <legend>题目管理</legend>
+            </fieldset>
+            <button class="layui-btn" onclick="TestPaper()" > <-返回试卷 </button>
             <div class="demoTable">
                 搜索编号：
                 <div class="layui-inline">
@@ -164,6 +169,7 @@
 
     <!-- 试卷  TestPager -->
     <script th:inline="none">
+        var TestPagerVar;
         layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element', 'slider'], function () {
             var laydate = layui.laydate //日期
                 , laypage = layui.laypage //分页
@@ -215,6 +221,7 @@
                     // }
                 }, 'data');
                 examination();
+                TestPagerVar = data.tid;
             });
             var $ = layui.$, active = {
                 reload: function(){
@@ -297,7 +304,6 @@
         });
     </script>
 
-
     <!-- 试题  Exercise -->
     <script th:inline="none">
         layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element', 'slider'], function () {
@@ -323,6 +329,7 @@
                 , cols: [[ //表头
                     {type: 'checkbox', fixed: 'left'}
                     , {field: 'id', title: 'ID', width: 80, fixed: 'left', totalRowText: '合计：'}
+                    , {field: 'sid', title: '试卷编号', width: 110}
                     , {field: 'tid', title: '题目编号', width: 110, sort: true, totalRow: true}
                     , {field: 'question', title: '问题', width: 200}
                     , {field: 'answer', title: '正确回答', width: 80, totalRow: true}
@@ -348,12 +355,16 @@
             var $ = layui.$, active = {
                 reload: function(){
                     var demoReload = $('#demoReload1');
+                    var demoReloadVar = demoReload.val();
+                    if (demoReloadVar == "" || demoReloadVar == null){
+                        demoReloadVar = TestPagerVar;
+                    }
                     //执行重载
                     table.reload('testReload3', {
                         page: {
                             curr: 1 //重新从第 1 页开始
                         }
-                        ,url: '/home/ExerciseJson?val='+demoReload.val()
+                        ,url: '/home/ExerciseJson?val='+demoReloadVar
                         // ,where: {
                         //     key: {
                         //        studentNumber: demoReload.val()
@@ -392,8 +403,7 @@
                             layer.msg('删除');
                         }
                         break;
-                }
-                ;
+                };
             });
 
             //监听行工具事件
@@ -408,12 +418,11 @@
                         deleteExercise("/home/deleteExercise", data.tid);
                         obj.del(); //删除对应行（tr）的DOM结构
                         layer.close(index);
-
                     });
                 } else if (layEvent === 'edit') {
                     layer.msg('编辑操作');
                     //在这里面输入任何合法的js语句
-                    PopoutExercise("updateExercise", "更新信息", data.tid, "readonly=\"readonly\"", "update")
+                    PopoutExercise("updateExercise", "更新信息", data.sid, "readonly=\"readonly\"", "update")
                 } else if (layEvent == "reload") {
                     layer.msg('重载');
                     // window.location.href="/home/home";
@@ -428,7 +437,6 @@
             });
         });
     </script>
-
 
     <!-- 表单  User -->
     <script th:inline="none">
@@ -710,9 +718,15 @@
                 , anim: 1 //0-6的动画形式，-1不开启
                 , content: '<form class="layui-form" id="formExercise" action="#" method ="Post">\n' +
                     '  <div class="layui-form-item">\n' +
-                    '    <label class="layui-form-label">试题编号</label>\n' +
+                    '    <label class="layui-form-label">试卷编号</label>\n' +
                     '    <div class="layui-input-block">\n' +
-                    '      <input type="text" value="' + tid + ' " name="tid" lay-verify="required" lay-reqtext="试卷是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input" ' + mzzStyle + '>\n' +
+                    '      <input type="text" value="' + tid + ' " name="sid" lay-verify="required" lay-reqtext="试卷是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input" ' + mzzStyle + '>\n' +
+                    '    </div>\n' +
+                    '  </div>\n' +
+                    '  <div class="layui-form-item">\n' +
+                    '    <label class="layui-form-label">习题编号</label>\n' +
+                    '    <div class="layui-input-block">\n' +
+                    '      <input type="text"  name="tid" lay-verify="required" lay-reqtext="试卷是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input" >\n' +
                     '    </div>\n' +
                     '  </div>\n' +
                     '  <div class="layui-form-item">\n' +
@@ -961,16 +975,16 @@
             document.getElementById("exam").style.display = "none";//隐藏考试盒子
         }
 
-        // 显示试卷盒子
+        // 显示习题盒子
         function examination () {
             document.getElementById("TestPaperDiv").style.display = "none";
             document.getElementById("ExerciseDiv").style.display = "";
         }
 
         // 显示试卷盒子
-        function examination () {
-            document.getElementById("TestPaperDiv").style.display = "none";//显示试题盒子
-            document.getElementById("ExerciseDiv").style.display = "";//隐藏试卷盒子
+        function TestPaper () {
+            document.getElementById("TestPaperDiv").style.display = "";//显示试题盒子
+            document.getElementById("ExerciseDiv").style.display = "none";//隐藏试卷盒子
         }
 
         // 解析：将你嵌入页面的高度设置成屏幕可视高度减去原框架顶部和底部高度（宽度设置同理）。

@@ -11,6 +11,7 @@ import java.util.List;
 public interface ExerciseRepository extends CrudRepository<Exercise,String>  {
 
     List<Exercise> findAll();
+    List<Exercise> findBySid(String val);
     List<Exercise> findByTid(String val);
 
     @Transactional
