@@ -72,6 +72,8 @@ public class ExerciseController {
     }
 
 
+
+
     @ResponseBody
     @PostMapping("/updateExercise")
     public  Map<String,String> TestPagerJson(Exercise exercise){
