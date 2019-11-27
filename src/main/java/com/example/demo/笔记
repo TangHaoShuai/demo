@@ -58,3 +58,7 @@ http statusCode(状态码) https://www.cnblogs.com/hao-1234-1234/p/8940079.html
         还要注意：spring-boot项目使用的jdk版本要和tomcat的jdk版本一致（都是1.8）;tomcat的lib中el-api.jar版本最好要是javax.el-api-3.0.0.jar版本，防止低版本冲突。
         只需要以上3步就可以打包成war包，并且部署到tomcat中了。需要注意的是这样部署的request url需要在端口后加上项目的名字才能正常访问。
         spring-boot更加强大的一点就是：即便项目是以上配置，依然可以用内嵌的tomcat来调试，启动命令和以前没变
+
+
+        服务器部署 三大部署方式
+        https://www.cnblogs.com/rmxd/p/11419193.html

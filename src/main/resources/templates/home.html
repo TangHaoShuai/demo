@@ -12,7 +12,7 @@
         <div class="layui-logo">柳职考试系统</div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
-            <li class="layui-nav-item"><a href="">首页</a></li>
+            <li class="layui-nav-item"><a onclick="MzzHome()">首页</a></li>
             <li class="layui-nav-item"><a onclick="Exam()">考试管理</a></li>
             <li class="layui-nav-item"><a onclick="examinationPaper()">试卷管理</a></li>
             <li class="layui-nav-item"><a onclick="User()">用户管理</a></li>
@@ -70,7 +70,7 @@
             <legend>跨域--------------------中国图书馆</legend>
         </fieldset>
 
-        <!--     <iframe id="content1" src="http://www.chnlib.com/" scrolling="no" width="100%"></iframe>-->
+             <iframe id="Mzzcontent" src="http://www.chnlib.com/" scrolling="no" width="100%"></iframe>
 
 
         <div class="layui-footer">
@@ -427,7 +427,7 @@
                 } else if (layEvent === 'edit') {
                     layer.msg('编辑操作');
                     //在这里面输入任何合法的js语句
-                    PopoutExercise("updateExercise", "更新信息", data.tid, "readonly=\"readonly\"", "update")
+                    PopoutExercise("updateExercise", "更新信息", data.tid, "readonly=\"readonly\"", "update",data.sid)
                 } else if (layEvent == "reload") {
                     layer.msg('重载');
                     // window.location.href="/home/home";
@@ -710,7 +710,7 @@
         }
 
         //封装起来的弹框Exercise
-        function PopoutExercise(MzzURL, title, tid, mzzStyle, identifying) {
+        function PopoutExercise(MzzURL, title, tid, mzzStyle, identifying,sid) {
             if (tid == "") {
                 tid = "输入新的试卷编号"
             }
@@ -722,6 +722,12 @@
                 , maxmin: true //允许全屏最小化
                 , anim: 1 //0-6的动画形式，-1不开启
                 , content: '<form class="layui-form" id="formExercise" action="#" method ="Post">\n' +
+                    '  <div class="layui-form-item">\n' +
+                    '    <label class="layui-form-label">所属试卷编号</label>\n' +
+                    '    <div class="layui-input-block">\n' +
+                    '      <input type="text" value="' + sid + ' " name="sid" lay-verify="required" lay-reqtext="试卷是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input" ' + mzzStyle + '>\n' +
+                    '    </div>\n' +
+                    '  </div>\n' +
                     '  <div class="layui-form-item">\n' +
                     '    <label class="layui-form-label">习题编号</label>\n' +
                     '    <div class="layui-input-block">\n' +
@@ -984,15 +990,22 @@
             document.getElementById("TestPaperDiv").style.display = "";//显示试题盒子
             document.getElementById("ExerciseDiv").style.display = "none";//隐藏试卷盒子
         }
+       // 主页
+        function MzzHome() {
+            document.getElementById("home").style.display = "";
+            document.getElementById("examinationPaper").style.display = "none";
+            document.getElementById("useraDministration").style.display = "none";
+            document.getElementById("exam").style.display = "none";
+        }
 
         // 解析：将你嵌入页面的高度设置成屏幕可视高度减去原框架顶部和底部高度（宽度设置同理）。
-        // reSerSize();
-        // window.onresize = reSerSize();
-        //跨域HTML 代码
-        // function reSerSize() {
-        //     var windowsheight = window.innerHeight;
-        //     document.getElementById("content1").style.height = (windowsheight - 50) + "px";
-        // }
+        reSerSize();
+        window.onresize = reSerSize();
+        // 跨域HTML 代码
+        function reSerSize() {
+            var windowsheight = window.innerHeight;
+            document.getElementById("Mzzcontent").style.height = (windowsheight - 50) + "px";
+        }
 
         //JavaScript代码区域
         layui.use('element', function () {
