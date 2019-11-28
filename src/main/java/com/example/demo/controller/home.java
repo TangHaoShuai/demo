@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.jws.soap.SOAPBinding;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,6 +20,23 @@ import java.util.Map;
 public class home {
     @Autowired
     private  UserRepository userRepository;
+
+    @ResponseBody
+    @GetMapping("user")
+    public User loginUser(User user){
+        User user1 = new User();
+    if (user.getUsername().equals("123")  && user.getPassWord() .equals("123")){
+        user1.setStudentNumber("20170313015");
+        user1.setUsername("张三");
+        user1.setEmail("1648375651@qq.com");
+        return  user1;
+    }else{
+        User user2 = new User();
+        return  user2;
+    }
+
+    }
+
 
     @ResponseBody
     @GetMapping("/userjson")
