@@ -1,0 +1,1557 @@
+{
+  "result": {
+    "songs": [
+      {
+        "id": 1345848098,
+        "name": "绿色",
+        "artists": [
+          {
+            "id": 12382970,
+            "name": "陈雪凝",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          }
+        ],
+        "album": {
+          "id": 75528003,
+          "name": "绿色",
+          "artist": {
+            "id": 0,
+            "name": "",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          "publishTime": 1550084210647,
+          "size": 1,
+          "copyrightId": 0,
+          "status": 0,
+          "picId": 109951163860425330,
+          "mark": 0
+        },
+        "duration": 269590,
+        "copyrightId": 0,
+        "status": 0,
+        "alias": [],
+        "rtype": 0,
+        "ftype": 0,
+        "mvid": 0,
+        "fee": 8,
+        "rUrl": null,
+        "mark": 0
+      },
+      {
+        "id": 1354262512,
+        "name": "绿色",
+        "artists": [
+          {
+            "id": 31764239,
+            "name": "杨逍Free",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          }
+        ],
+        "album": {
+          "id": 78197651,
+          "name": "绿色",
+          "artist": {
+            "id": 0,
+            "name": "",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          "publishTime": 1553502824000,
+          "size": 1,
+          "copyrightId": 1372820,
+          "status": 0,
+          "picId": 109951163951043230,
+          "mark": 0
+        },
+        "duration": 269800,
+        "copyrightId": 1372820,
+        "status": 0,
+        "alias": [
+          "原唱：陈雪凝"
+        ],
+        "rtype": 0,
+        "ftype": 0,
+        "mvid": 0,
+        "fee": 0,
+        "rUrl": null,
+        "mark": 0
+      },
+      {
+        "id": 1399847104,
+        "name": "绿色（抖音版）",
+        "artists": [
+          {
+            "id": 12477029,
+            "name": "朱习爱",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          }
+        ],
+        "album": {
+          "id": 82821571,
+          "name": "绿色（抖音版）",
+          "artist": {
+            "id": 0,
+            "name": "",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          "publishTime": 1572278400000,
+          "size": 0,
+          "copyrightId": -1,
+          "status": 1,
+          "picId": 109951164456133040,
+          "mark": 0
+        },
+        "duration": 219306,
+        "copyrightId": 1416542,
+        "status": 0,
+        "alias": [],
+        "rtype": 0,
+        "ftype": 0,
+        "mvid": 0,
+        "fee": 8,
+        "rUrl": null,
+        "mark": 0
+      },
+      {
+        "id": 1390136840,
+        "name": "绿色",
+        "artists": [
+          {
+            "id": 13568181,
+            "name": "音墨泽",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          }
+        ],
+        "album": {
+          "id": 81104766,
+          "name": "颜色",
+          "artist": {
+            "id": 0,
+            "name": "",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          "publishTime": 1566576000000,
+          "size": 10,
+          "copyrightId": 0,
+          "status": 0,
+          "picId": 109951164317648530,
+          "mark": 0
+        },
+        "duration": 272384,
+        "copyrightId": 0,
+        "status": 0,
+        "alias": [],
+        "rtype": 0,
+        "ftype": 0,
+        "mvid": 0,
+        "fee": 8,
+        "rUrl": null,
+        "mark": 0
+      },
+      {
+        "id": 1358934727,
+        "name": "绿色(DJ版)",
+        "artists": [
+          {
+            "id": 31856651,
+            "name": "六月",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          {
+            "id": 31892338,
+            "name": "阿祥",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          {
+            "id": 12213335,
+            "name": "枫宇辰",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          }
+        ],
+        "album": {
+          "id": 78519131,
+          "name": "绿色",
+          "artist": {
+            "id": 0,
+            "name": "",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          "publishTime": 1555257600000,
+          "size": 2,
+          "copyrightId": 1371818,
+          "status": 1,
+          "picId": 109951164000855580,
+          "mark": 0
+        },
+        "duration": 271962,
+        "copyrightId": 1416542,
+        "status": 0,
+        "alias": [],
+        "rtype": 0,
+        "ftype": 0,
+        "mvid": 0,
+        "fee": 8,
+        "rUrl": null,
+        "mark": 0
+      },
+      {
+        "id": 1403542588,
+        "name": "绿色 (男生版)",
+        "artists": [
+          {
+            "id": 31889398,
+            "name": "Jesse T",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          }
+        ],
+        "album": {
+          "id": 83348359,
+          "name": "绿色 (男生版)",
+          "artist": {
+            "id": 0,
+            "name": "",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          "publishTime": 1572451200000,
+          "size": 1,
+          "copyrightId": 1416074,
+          "status": 1,
+          "picId": 109951164487803730,
+          "mark": 0
+        },
+        "duration": 93192,
+        "copyrightId": 1416074,
+        "status": 0,
+        "alias": [],
+        "rtype": 0,
+        "ftype": 0,
+        "mvid": 0,
+        "fee": 8,
+        "rUrl": null,
+        "mark": 8192
+      },
+      {
+        "id": 1356080772,
+        "name": "绿色（Cover：陈雪凝）",
+        "artists": [
+          {
+            "id": 27871785,
+            "name": "梦逸飞",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          }
+        ],
+        "album": {
+          "id": 78263953,
+          "name": "绿色",
+          "artist": {
+            "id": 0,
+            "name": "",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          "publishTime": 1554178784465,
+          "size": 0,
+          "copyrightId": 0,
+          "status": 0,
+          "picId": 109951163969600860,
+          "mark": 0
+        },
+        "duration": 297257,
+        "copyrightId": 0,
+        "status": 0,
+        "alias": [],
+        "rtype": 0,
+        "ftype": 0,
+        "mvid": 0,
+        "fee": 0,
+        "rUrl": null,
+        "mark": 0
+      },
+      {
+        "id": 1393114759,
+        "name": "绿色",
+        "artists": [
+          {
+            "id": 13866036,
+            "name": "柳建",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          }
+        ],
+        "album": {
+          "id": 39688173,
+          "name": "你、我、他",
+          "artist": {
+            "id": 0,
+            "name": "",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          "publishTime": 1528905600000,
+          "size": 5,
+          "copyrightId": 0,
+          "status": 0,
+          "picId": 109951163353759870,
+          "mark": 0
+        },
+        "duration": 233769,
+        "copyrightId": 0,
+        "status": 0,
+        "alias": [],
+        "rtype": 0,
+        "ftype": 0,
+        "mvid": 0,
+        "fee": 8,
+        "rUrl": null,
+        "mark": 0
+      },
+      {
+        "id": 1357652717,
+        "name": "绿色",
+        "artists": [
+          {
+            "id": 12477029,
+            "name": "朱习爱",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          }
+        ],
+        "album": {
+          "id": 78412699,
+          "name": "绿色",
+          "artist": {
+            "id": 0,
+            "name": "",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          "publishTime": 1554739200000,
+          "size": 1,
+          "copyrightId": 725010,
+          "status": 1,
+          "picId": 109951163986855120,
+          "mark": 0
+        },
+        "duration": 264306,
+        "copyrightId": 725010,
+        "status": 0,
+        "alias": [],
+        "rtype": 0,
+        "ftype": 0,
+        "mvid": 0,
+        "fee": 8,
+        "rUrl": null,
+        "mark": 0
+      },
+      {
+        "id": 1388608299,
+        "name": "绿色 (Live)",
+        "artists": [
+          {
+            "id": 12382970,
+            "name": "陈雪凝",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          }
+        ],
+        "album": {
+          "id": 81351577,
+          "name": "聚划算99划算盛典Live",
+          "artist": {
+            "id": 0,
+            "name": "",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          "publishTime": 1567958400000,
+          "size": 23,
+          "copyrightId": 1416434,
+          "status": 0,
+          "picId": 109951164353237630,
+          "mark": 0
+        },
+        "duration": 277717,
+        "copyrightId": 1416434,
+        "status": 0,
+        "alias": [],
+        "rtype": 0,
+        "ftype": 0,
+        "mvid": 10890701,
+        "fee": 8,
+        "rUrl": null,
+        "mark": 0
+      },
+      {
+        "id": 527327967,
+        "name": "绿色",
+        "artists": [
+          {
+            "id": 3937,
+            "name": "刘斌",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          }
+        ],
+        "album": {
+          "id": 38620039,
+          "name": "群星合集 31",
+          "artist": {
+            "id": 0,
+            "name": "",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          "publishTime": -28800000,
+          "size": 500,
+          "copyrightId": 623010,
+          "status": 0,
+          "picId": 109951163288502720,
+          "mark": 0
+        },
+        "duration": 253706,
+        "copyrightId": 623010,
+        "status": 0,
+        "alias": [],
+        "rtype": 0,
+        "ftype": 0,
+        "mvid": 0,
+        "fee": 0,
+        "rUrl": null,
+        "mark": 0
+      },
+      {
+        "id": 526652161,
+        "name": "绿色",
+        "artists": [
+          {
+            "id": 12474518,
+            "name": "卢律铭",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          }
+        ],
+        "album": {
+          "id": 37099034,
+          "name": "天黑请闭眼 原声带",
+          "artist": {
+            "id": 0,
+            "name": "",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          "publishTime": 1514476800000,
+          "size": 21,
+          "copyrightId": 36016,
+          "status": 0,
+          "transNames": [
+            "Before it's dark (Original TV series soundtrack from  \"Close your eyes before it's dark\")"
+          ],
+          "picId": 109951163094536060,
+          "mark": 0
+        },
+        "duration": 191821,
+        "copyrightId": 1400821,
+        "status": 0,
+        "alias": [
+          "Green"
+        ],
+        "rtype": 0,
+        "ftype": 0,
+        "mvid": 0,
+        "fee": 8,
+        "rUrl": null,
+        "mark": 0
+      },
+      {
+        "id": 1392499642,
+        "name": "绿色",
+        "artists": [
+          {
+            "id": 33295030,
+            "name": "小爱的钢琴曲",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          }
+        ],
+        "album": {
+          "id": 81829905,
+          "name": "必听18首钢琴曲 - 2019国内最好听的钢琴轻音乐为了一个人休息",
+          "artist": {
+            "id": 0,
+            "name": "",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          "publishTime": 1568649600000,
+          "size": 0,
+          "copyrightId": 743010,
+          "status": 1,
+          "picId": 109951164379619140,
+          "mark": 0
+        },
+        "duration": 373999,
+        "copyrightId": 743010,
+        "status": 0,
+        "alias": [],
+        "rtype": 0,
+        "ftype": 0,
+        "mvid": 0,
+        "fee": 8,
+        "rUrl": null,
+        "mark": 8320
+      },
+      {
+        "id": 1325897054,
+        "name": "绿色丛林",
+        "artists": [
+          {
+            "id": 1203045,
+            "name": "艾热 AIR",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          {
+            "id": 1155005,
+            "name": "Terry Zhong",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          }
+        ],
+        "album": {
+          "id": 74269023,
+          "name": "2018 丛林电音主题曲专辑",
+          "artist": {
+            "id": 0,
+            "name": "",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          "publishTime": 1542902400000,
+          "size": 5,
+          "copyrightId": 1415904,
+          "status": 0,
+          "picId": 109951163676248260,
+          "mark": 0
+        },
+        "duration": 216521,
+        "copyrightId": 1415904,
+        "status": 0,
+        "alias": [
+          "2018丛林电子音乐节主题曲"
+        ],
+        "rtype": 0,
+        "ftype": 0,
+        "mvid": 0,
+        "fee": 8,
+        "rUrl": null,
+        "mark": 0
+      },
+      {
+        "id": 1406271333,
+        "name": "绿色健康小清新FREESTYLE",
+        "artists": [
+          {
+            "id": 12600748,
+            "name": "宇宙怪獣Zetton",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          {
+            "id": 13113408,
+            "name": "GREET-V眼圈",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          }
+        ],
+        "album": {
+          "id": 83643199,
+          "name": "绿色健康小清新Free style",
+          "artist": {
+            "id": 0,
+            "name": "",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          "publishTime": 1574846837104,
+          "size": 1,
+          "copyrightId": 0,
+          "status": 0,
+          "picId": 109951164513875620,
+          "mark": 0
+        },
+        "duration": 144000,
+        "copyrightId": 0,
+        "status": 0,
+        "alias": [],
+        "rtype": 0,
+        "ftype": 0,
+        "mvid": 0,
+        "fee": 8,
+        "rUrl": null,
+        "mark": 0
+      },
+      {
+        "id": 1404740625,
+        "name": "绿色废人",
+        "artists": [
+          {
+            "id": 12664848,
+            "name": "火晚晴",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          {
+            "id": 12867897,
+            "name": "CHEND",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          }
+        ],
+        "album": {
+          "id": 83502661,
+          "name": "绿色废人",
+          "artist": {
+            "id": 0,
+            "name": "",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          "publishTime": 1574159578646,
+          "size": 1,
+          "copyrightId": 0,
+          "status": 0,
+          "picId": 109951164498352100,
+          "mark": 0
+        },
+        "duration": 162304,
+        "copyrightId": 0,
+        "status": 0,
+        "alias": [],
+        "rtype": 0,
+        "ftype": 0,
+        "mvid": 0,
+        "fee": 8,
+        "rUrl": null,
+        "mark": 0
+      },
+      {
+        "id": 1380398595,
+        "name": "绿色家园",
+        "artists": [
+          {
+            "id": 30547841,
+            "name": "泽旺拉姆",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          }
+        ],
+        "album": {
+          "id": 80626694,
+          "name": "绿色家园",
+          "artist": {
+            "id": 0,
+            "name": "",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          "publishTime": 1564159733154,
+          "size": 1,
+          "copyrightId": 0,
+          "status": 0,
+          "picId": 109951164242695970,
+          "mark": 0
+        },
+        "duration": 218709,
+        "copyrightId": 0,
+        "status": 0,
+        "alias": [],
+        "rtype": 0,
+        "ftype": 0,
+        "mvid": 0,
+        "fee": 8,
+        "rUrl": null,
+        "mark": 0
+      },
+      {
+        "id": 1406292033,
+        "name": "214（Cover：Double C）",
+        "artists": [
+          {
+            "id": 33017945,
+            "name": "绿色学长",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          }
+        ],
+        "album": {
+          "id": 83670867,
+          "name": "2.14",
+          "artist": {
+            "id": 0,
+            "name": "",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          "publishTime": 1574854443221,
+          "size": 1,
+          "copyrightId": 0,
+          "status": 0,
+          "picId": 109951164514069500,
+          "mark": 0
+        },
+        "duration": 156447,
+        "copyrightId": 0,
+        "status": 0,
+        "alias": [],
+        "rtype": 0,
+        "ftype": 0,
+        "mvid": 0,
+        "fee": 0,
+        "rUrl": null,
+        "mark": 0
+      },
+      {
+        "id": 5377454,
+        "name": "그래 늦지 않았어",
+        "artists": [
+          {
+            "id": 126820,
+            "name": "绿色地带",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          }
+        ],
+        "album": {
+          "id": 527174,
+          "name": "일곱번째 다이어리",
+          "artist": {
+            "id": 0,
+            "name": "",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          "publishTime": 1256054400000,
+          "size": 10,
+          "copyrightId": 0,
+          "status": 1,
+          "transNames": [
+            "第七本日记"
+          ],
+          "picId": 6656443394676221,
+          "mark": 0
+        },
+        "duration": 234422,
+        "copyrightId": 0,
+        "status": 0,
+        "alias": [],
+        "rtype": 0,
+        "ftype": 0,
+        "transNames": [
+          "还好不是很晚"
+        ],
+        "mvid": 0,
+        "fee": 0,
+        "rUrl": null,
+        "mark": 0
+      },
+      {
+        "id": 1311347589,
+        "name": "绿色的大爱 ",
+        "artists": [
+          {
+            "id": 3072,
+            "name": "韩磊",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          }
+        ],
+        "album": {
+          "id": 73467798,
+          "name": "绿色的大爱",
+          "artist": {
+            "id": 0,
+            "name": "",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          "publishTime": 1538064000007,
+          "size": 2,
+          "copyrightId": 754021,
+          "status": 0,
+          "picId": 109951163569817420,
+          "mark": 0
+        },
+        "duration": 242876,
+        "copyrightId": 754021,
+        "status": 0,
+        "alias": [],
+        "rtype": 0,
+        "ftype": 0,
+        "mvid": 10801258,
+        "fee": 8,
+        "rUrl": null,
+        "mark": 0
+      },
+      {
+        "id": 1380849171,
+        "name": "绿色的草原",
+        "artists": [
+          {
+            "id": 6847,
+            "name": "泽旺多吉",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          }
+        ],
+        "album": {
+          "id": 80658168,
+          "name": "绿色的草原",
+          "artist": {
+            "id": 0,
+            "name": "",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          "publishTime": 1564416000000,
+          "size": 0,
+          "copyrightId": 1415887,
+          "status": 1,
+          "picId": 109951164248873700,
+          "mark": 0
+        },
+        "duration": 249208,
+        "copyrightId": 1415887,
+        "status": 0,
+        "alias": [],
+        "rtype": 0,
+        "ftype": 0,
+        "mvid": 0,
+        "fee": 8,
+        "rUrl": null,
+        "mark": 0
+      },
+      {
+        "id": 1371093391,
+        "name": "绿色曙光",
+        "artists": [
+          {
+            "id": 12138049,
+            "name": "雪碧说唱",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          {
+            "id": 12704089,
+            "name": "极地是好乐队",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          }
+        ],
+        "album": {
+          "id": 79718850,
+          "name": "绿色曙光",
+          "artist": {
+            "id": 0,
+            "name": "",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          "publishTime": 1560182400000,
+          "size": 2,
+          "copyrightId": 1391818,
+          "status": 1,
+          "picId": 109951164144196660,
+          "mark": 0
+        },
+        "duration": 186250,
+        "copyrightId": 1416503,
+        "status": 0,
+        "alias": [],
+        "rtype": 0,
+        "ftype": 0,
+        "mvid": 0,
+        "fee": 8,
+        "rUrl": null,
+        "mark": 0
+      },
+      {
+        "id": 93460,
+        "name": "绿色的日子",
+        "artists": [
+          {
+            "id": 3070,
+            "name": "黄玠",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          }
+        ],
+        "album": {
+          "id": 9172,
+          "name": "绿色的日子",
+          "artist": {
+            "id": 0,
+            "name": "",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          "publishTime": 1180540800000,
+          "size": 6,
+          "copyrightId": 0,
+          "status": 1,
+          "picId": 54975581401134,
+          "mark": 0
+        },
+        "duration": 293306,
+        "copyrightId": 682010,
+        "status": 0,
+        "alias": [],
+        "rtype": 0,
+        "ftype": 0,
+        "mvid": 0,
+        "fee": 1,
+        "rUrl": null,
+        "mark": 0
+      },
+      {
+        "id": 1313102614,
+        "name": "绿色家园",
+        "artists": [
+          {
+            "id": 6109,
+            "name": "伊洋",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          {
+            "id": 10879,
+            "name": "张晓棠",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          }
+        ],
+        "album": {
+          "id": 73468080,
+          "name": "绿色家园",
+          "artist": {
+            "id": 0,
+            "name": "",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          "publishTime": 1538236800007,
+          "size": 1,
+          "copyrightId": 32002,
+          "status": 0,
+          "picId": 109951163576507040,
+          "mark": 0
+        },
+        "duration": 312006,
+        "copyrightId": 32002,
+        "status": 0,
+        "alias": [],
+        "rtype": 0,
+        "ftype": 0,
+        "mvid": 0,
+        "fee": 0,
+        "rUrl": null,
+        "mark": 0
+      },
+      {
+        "id": 1317624552,
+        "name": "绿色的梦想",
+        "artists": [
+          {
+            "id": 12475724,
+            "name": "夏侯钰涵",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          }
+        ],
+        "album": {
+          "id": 73862124,
+          "name": "《绿色的梦想》",
+          "artist": {
+            "id": 0,
+            "name": "",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          "publishTime": 1539394042177,
+          "size": 1,
+          "copyrightId": 0,
+          "status": 0,
+          "picId": 109951163600518560,
+          "mark": 0
+        },
+        "duration": 294466,
+        "copyrightId": 0,
+        "status": 0,
+        "alias": [],
+        "rtype": 0,
+        "ftype": 0,
+        "mvid": 0,
+        "fee": 0,
+        "rUrl": null,
+        "mark": 0
+      },
+      {
+        "id": 5377460,
+        "name": "사랑을 할거야",
+        "artists": [
+          {
+            "id": 126820,
+            "name": "绿色地带",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          }
+        ],
+        "album": {
+          "id": 527174,
+          "name": "일곱번째 다이어리",
+          "artist": {
+            "id": 0,
+            "name": "",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          "publishTime": 1256054400000,
+          "size": 10,
+          "copyrightId": 0,
+          "status": 1,
+          "transNames": [
+            "第七本日记"
+          ],
+          "picId": 6656443394676221,
+          "mark": 0
+        },
+        "duration": 287791,
+        "copyrightId": 0,
+        "status": 0,
+        "alias": [],
+        "rtype": 0,
+        "ftype": 0,
+        "transNames": [
+          "要爱"
+        ],
+        "mvid": 0,
+        "fee": 0,
+        "rUrl": null,
+        "mark": 0
+      },
+      {
+        "id": 520460725,
+        "name": "回心转意",
+        "artists": [
+          {
+            "id": 12894245,
+            "name": "绿色森林",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          }
+        ],
+        "album": {
+          "id": 36854178,
+          "name": "绿色森林",
+          "artist": {
+            "id": 0,
+            "name": "",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          "publishTime": 1104508800007,
+          "size": 8,
+          "copyrightId": 0,
+          "status": 0,
+          "picId": 109951163071972050,
+          "mark": 0
+        },
+        "duration": 277080,
+        "copyrightId": 1416163,
+        "status": 0,
+        "alias": [],
+        "rtype": 0,
+        "ftype": 0,
+        "mvid": 0,
+        "fee": 1,
+        "rUrl": null,
+        "mark": 8192
+      },
+      {
+        "id": 224163,
+        "name": "绿色之梦",
+        "artists": [
+          {
+            "id": 7540,
+            "name": "德德玛",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          }
+        ],
+        "album": {
+          "id": 22648,
+          "name": "我的根在草原",
+          "artist": {
+            "id": 0,
+            "name": "",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          "publishTime": 1188316800007,
+          "size": 13,
+          "copyrightId": 372013,
+          "status": 1,
+          "picId": 60473139533536,
+          "mark": 0
+        },
+        "duration": 257437,
+        "copyrightId": 372013,
+        "status": 0,
+        "alias": [],
+        "rtype": 0,
+        "ftype": 0,
+        "mvid": 0,
+        "fee": 8,
+        "rUrl": null,
+        "mark": 0
+      },
+      {
+        "id": 25923498,
+        "name": "绿色背影",
+        "artists": [
+          {
+            "id": 7517,
+            "name": "张迈",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          }
+        ],
+        "album": {
+          "id": 2341369,
+          "name": "绿色背影",
+          "artist": {
+            "id": 0,
+            "name": "",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          "publishTime": 1158249600007,
+          "size": 12,
+          "copyrightId": 0,
+          "status": 1,
+          "picId": 3240260767520327,
+          "mark": 0
+        },
+        "duration": 286000,
+        "copyrightId": 22019,
+        "status": 0,
+        "alias": [],
+        "rtype": 0,
+        "ftype": 0,
+        "mvid": 0,
+        "fee": 8,
+        "rUrl": null,
+        "mark": 0
+      },
+      {
+        "id": 521493405,
+        "name": "绿色北京",
+        "artists": [
+          {
+            "id": 2119,
+            "name": "蔡国庆",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          {
+            "id": 7159,
+            "name": "白雪",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          }
+        ],
+        "album": {
+          "id": 36875087,
+          "name": "世园金曲",
+          "artist": {
+            "id": 0,
+            "name": "",
+            "picUrl": null,
+            "alias": [],
+            "albumSize": 0,
+            "picId": 0,
+            "img1v1Url": "https://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+            "img1v1": 0,
+            "trans": null
+          },
+          "publishTime": 1512316800000,
+          "size": 9,
+          "copyrightId": 534010,
+          "status": 0,
+          "picId": 109951163073869470,
+          "mark": 0
+        },
+        "duration": 190976,
+        "copyrightId": 534010,
+        "status": 0,
+        "alias": [],
+        "rtype": 0,
+        "ftype": 0,
+        "mvid": 0,
+        "fee": 0,
+        "rUrl": null,
+        "mark": 0
+      }
+    ],
+    "songCount": 600
+  },
+  "code": 200
+}

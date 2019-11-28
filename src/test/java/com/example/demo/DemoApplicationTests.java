@@ -2,9 +2,11 @@ package com.example.demo;
 
 import com.example.demo.dao.ExerciseRepository;
 import com.example.demo.dao.TestPagerRepository;
+import com.example.demo.dao.TheTestRepository;
 import com.example.demo.dao.UserRepository;
 import com.example.demo.model.Exercise;
 import com.example.demo.model.TestPaper;
+import com.example.demo.model.TheTest;
 import com.example.demo.model.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,8 @@ class DemoApplicationTests {
     private ExerciseRepository exerciseRepository;
     @Autowired
     private TestPagerRepository testPagerRepository;
+    @Autowired
+    private TheTestRepository theTestRepository;
 
     @Test
     void contextLoads() {
@@ -62,7 +66,7 @@ class DemoApplicationTests {
     }
 
     @Test
-    void  AddTestPage(){
+    void  AddTestPageaasd(){
         Exercise exercise = new Exercise();
         exercise.setQuestion("这个一个测试！！！！");
         exercise.setAnswer("1");
@@ -77,7 +81,7 @@ class DemoApplicationTests {
 
     }
     @Test
-    void  AddTestPages(){
+    void  AddTestPagesdsad(){
         TestPaper testPaper = new TestPaper();
         testPaper.setTid("232");
         testPaper.setTname("android开发");
@@ -85,5 +89,17 @@ class DemoApplicationTests {
         testPagerRepository.save(testPaper);
 
     }
+
+    @Test
+    void  TheTest22(){
+        TheTest theTest = new TheTest();
+            theTest.setTheName("android测试");
+            theTest.setTestPaperID("004");
+            theTest.setTheStartTime("2019.11.28 8:30");
+            theTest.setTheEndOfTime("2019.11.29 8:30");
+            theTest.setState("正在进行");
+            theTestRepository.save(theTest);
+    }
+
 
 }

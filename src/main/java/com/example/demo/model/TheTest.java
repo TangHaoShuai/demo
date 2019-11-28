@@ -40,4 +40,51 @@ public class TheTest {
     private String State;
 
 
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public String getTheName() {
+        return theName;
+    }
+
+    public void setTheName(String theName) {
+        this.theName = theName;
+    }
+
+    public String getTheStartTime() {
+        return theStartTime;
+    }
+
+    public void setTheStartTime(String theStartTime) {
+        this.theStartTime = theStartTime;
+    }
+
+    public String getTheEndOfTime() {
+        return theEndOfTime;
+    }
+
+    public void setTheEndOfTime(String theEndOfTime) {
+        this.theEndOfTime = theEndOfTime;
+    }
+
+    public String getTestPaperID() {
+        return TestPaperID;
+    }
+
+    public void setTestPaperID(String testPaperID) {
+        TestPaperID = testPaperID;
+    }
+
+    public String getState() {
+        return State;
+    }
+
+    public void setState(String state) {
+        State = state;
+    }
 }
