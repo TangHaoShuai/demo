@@ -2,11 +2,13 @@ package com.example.demo.controller;
 
 
 import com.example.demo.dao.TheTestRepository;
+import com.example.demo.model.Exercise;
 import com.example.demo.model.TestPaper;
 import com.example.demo.model.TheTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -23,9 +25,13 @@ public class TheTestController {
 
 
     @ResponseBody
-    @GetMapping("TheTestJosn")
-    public Map<String,Object> TheTestJosn(){
+    @GetMapping("TheTestJson")
+    public Map<String,Object> TheTestJosn(String val){
         List<TheTest> theTests = theTestRepository.findAll();
+        if(val.length() > 0 ){
+            List<TheTest> list = theTestRepository.findByTheName(val);
+            theTests = list;
+        }
         Map<String, Object> map = new HashMap<>();
         map.put("code",0);
         map.put("msg",0);
@@ -45,6 +51,24 @@ public class TheTestController {
         map.put("data",list);
         return map;
     }
+
+    @ResponseBody
+    @PostMapping("deleteTheTest")
+    public Map<String,String> deleteTheTest(TheTest theTest){
+        Map<String, String> map = new HashMap<>();
+        if (theTest.getUid() == ""){
+            map.put("name","ID不可以为空");
+        }else{
+            theTestRepository.deleteTheTest(theTest.getUid());
+            map.put("name","删除成功");
+        }
+        return map;
+    }
+
+
+
+
+
 
     @ResponseBody
     @GetMapping("chaxun")

@@ -11,6 +11,9 @@ import com.example.demo.model.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -33,8 +36,8 @@ class DemoApplicationTests {
 //        user.setPhone("15778676033");
 //        user.setSex("女");
 //        userRepository.save(user);
-            List<User> users = userRepository.findByStudentNumber("2015456");
-        System.out.printf(users.toString());
+      List<User> users = userRepository.findByStudentNumber("2015456");
+      System.out.printf(users.toString());
     }
     @Test
     void inquire(){
@@ -45,23 +48,27 @@ class DemoApplicationTests {
     }
     @Test
     void updateUser(){
-        User user = new User();
 
-        user.setStudentNumber("20170313015");
-        user.setPhone("15778676033");
-        user.setSex("男");
-        user.setEmail("1648375651@qq.com");
-        user.setCity("广西玉林");
-        user.setUsername("靓仔");
-        user.setClassify("程序员");
-        user.setPassWord("0522");
-        user.setSign("20");
-        user.setWealth("620");
-       userRepository.updateUser(user.getStudentNumber(),
-               user.getUsername(),user.getPassWord()
-               ,user.getEmail(),user.getPhone(),user.getCity(),
-               user.getSign(),user.getClassify(),user.getWealth(),
-               user.getSex());
+        for (int i=0; i<=10 ;i++){
+            User user = new User();
+            user.setStudentNumber("2017031301"+i);
+            user.setPhone("15778676033");
+            user.setSex("男");
+            user.setEmail("1648375651@qq.com");
+            user.setCity("广西玉林");
+            user.setUsername("靓仔");
+            user.setClassify("程序员");
+            user.setPassWord("0522");
+            user.setSign("20");
+            user.setWealth("620");
+//       userRepository.updateUser(user.getStudentNumber(),
+//               user.getUsername(),user.getPassWord()
+//               ,user.getEmail(),user.getPhone(),user.getCity(),
+//               user.getSign(),user.getClassify(),user.getWealth(),
+//               user.getSex());
+            userRepository.save(user);
+        }
+
 
     }
 
@@ -100,6 +107,16 @@ class DemoApplicationTests {
             theTest.setState("正在进行");
             theTestRepository.save(theTest);
     }
+    @Test
+    void  asdfasdfa(){
+        Pageable pageable =  PageRequest.of(1,5);
+      Page<User> users = userRepository.findAll(pageable);
+      for (User u:users ){
+          System.out.println(u.getStudentNumber());
+      }
+    }
+
+
 
 
 }
