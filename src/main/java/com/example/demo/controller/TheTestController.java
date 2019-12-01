@@ -23,6 +23,38 @@ public class TheTestController {
     @Autowired
     private TheTestRepository theTestRepository;
 
+    @ResponseBody
+    @PostMapping("AddTheTestJson")
+    public Map<String,String> AddTheTestJson(TheTest theTest){
+        Map<String,String> map = new HashMap<>();
+        if (theTest.getState() =="" || theTest.getTestPaperID()=="" || theTest.getTheEndOfTime()==""
+        || theTest.getTestPaperID() =="" || theTest.getTheStartTime()==""){
+
+            map.put("name","内容不可以为空");
+        }else{
+            theTestRepository.save(theTest);
+            map.put("name","添加成功");
+        }
+        return map;
+    }
+
+    @ResponseBody
+    @PostMapping("updateTheTestJson")
+    public Map<String,String> updateTheTestJson(TheTest theTest){
+        Map<String,String> map = new HashMap<>();
+        if (theTest.getState() =="" || theTest.getTestPaperID()=="" || theTest.getTheEndOfTime()==""
+                || theTest.getTestPaperID() =="" || theTest.getTheStartTime()=="" || theTest.getUid()==""){
+
+            map.put("name","内容不可以为空");
+        }else{
+            theTestRepository.updateTheTest(theTest.getUid(),
+                    theTest.getTheName(),theTest.getTheStartTime(),theTest.getTheEndOfTime()
+            ,theTest.getTestPaperID(),theTest.getState());
+            map.put("name","修改成功");
+        }
+        return map;
+    }
+
 
     @ResponseBody
     @GetMapping("TheTestJson")
