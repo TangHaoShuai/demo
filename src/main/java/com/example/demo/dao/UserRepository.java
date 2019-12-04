@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -13,9 +14,10 @@ import java.util.List;
 public interface UserRepository extends CrudRepository<User,String> {
       List<User> findAll();
       int deleteByStudentNumber(User user);
-      List<User> findByStudentNumber(String StudentNumber);
+   //   List<User> findByStudentNumber(String StudentNumber);
 
       Page<User> findAll(Pageable pageable);
+   //   Page<User> findUserByStudentNumber(Pageable pageable);
 
       @Transactional
       @Modifying
@@ -26,6 +28,9 @@ public interface UserRepository extends CrudRepository<User,String> {
       @Modifying
       @Query(value = "delete from User where studentNumber =?1")
       int delUser(String studentNumber);
+
+      @Query(value = "select * from User limit :page,:total ",nativeQuery = true)
+      List<User> getList(@Param("page")int page ,@Param("total") int total);
 
 
 }

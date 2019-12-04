@@ -14,6 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 import java.util.List;
 
@@ -36,8 +37,8 @@ class DemoApplicationTests {
 //        user.setPhone("15778676033");
 //        user.setSex("女");
 //        userRepository.save(user);
-      List<User> users = userRepository.findByStudentNumber("2015456");
-      System.out.printf(users.toString());
+     // List<User> users = userRepository.findByStudentNumber("2015456");
+   //   System.out.printf(users.toString());
     }
     @Test
     void inquire(){
@@ -109,12 +110,17 @@ class DemoApplicationTests {
     }
     @Test
     void  asdfasdfa(){
-        Pageable pageable =  PageRequest.of(1,5);
-      Page<User> users = userRepository.findAll(pageable);
-      for (User u:users ){
-          System.out.println(u.getStudentNumber());
-      }
+
+
+//        Pageable pageable =  PageRequest.of(0,5);
+//        Page<User> users = userRepository.findUserByStudentNumber(pageable);
+        List<User> users = userRepository.getList(1,1);
+        for (User u:users ){
+            System.out.println(u.getStudentNumber());
+        }
+        System.out.println();
     }
+
 
 
 

@@ -3,13 +3,19 @@ package com.example.demo.controller;
 import com.example.demo.dao.UserRepository;
 import com.example.demo.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.jws.soap.SOAPBinding;
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,6 +23,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/home")
+@Service
 public class home {
     @Autowired
     private  UserRepository userRepository;
@@ -40,36 +47,42 @@ public class home {
 
     @ResponseBody
     @GetMapping("/userjson")
-    public  Map<String,Object> userJosn(String val){
-        List<User> users = userRepository.findAll();
-        if(val.length() >0 ){
-            List<User> list = userRepository.findByStudentNumber(val);
-            users = list;
-        }
-        Map<String,Object> map = new HashMap<>();
-        map.put("code",0);
-        map.put("msg",0);
-        map.put("count",users.size());
-        List<Object> list = new ArrayList<Object>();
+    public  Map<String,Object> userJosn(String val,int page ,int limit){
+      //  http://localhost:8080/home/userjson1?val=&page=1&limit=10
+//        Pageable pageable =  PageRequest.of(page,limit,Sort.Direction.DESC, "uid");
+//        Page<User> users = userRepository.findAll(pageable);
 
-        String[] str = new String[]{"id","studentNumber","phone","username",
-        "email","sex","city","sign","classify","wealth"};
-        for (int i=0 ; i< users.size() ; i++ ){
-                 Map<String,Object> map1 = new HashMap<>();
-                 map1.put(str[0],users.get(i).getUid());
-                 map1.put(str[1],users.get(i).getStudentNumber());
-                 map1.put(str[2],users.get(i).getPhone());
-                 map1.put(str[3],users.get(i).getUsername());
-                 map1.put(str[4],users.get(i).getEmail());
-                 map1.put(str[5],users.get(i).getSex());
-                 map1.put(str[6],users.get(i).getCity());
-                 map1.put(str[7],users.get(i).getSign());
-                 map1.put(str[8],users.get(i).getClassify());
-                 map1.put(str[9],users.get(i).getWealth());
-                 list.add(map1);
-        }
-        //  map1.clear();  清除map数据
-        map.put("data",list);
+
+//
+//        List<User> users = userRepository.findAll();
+//        if(val.length() >0 ){
+//            List<User> list = userRepository.findByStudentNumber(val);
+//            users = list;
+//        }
+        Map<String,Object> map = new HashMap<>();
+//        map.put("code",0);
+//        map.put("msg",0);
+//        map.put("count",users.size());
+//        List<Object> list = new ArrayList<Object>();
+//
+//        String[] str = new String[]{"id","studentNumber","phone","username",
+//        "email","sex","city","sign","classify","wealth"};
+//        for (int i=0 ; i< users.size() ; i++ ){
+//                 Map<String,Object> map1 = new HashMap<>();
+//                 map1.put(str[0],users.get(i).getUid());
+//                 map1.put(str[1],users.get(i).getStudentNumber());
+//                 map1.put(str[2],users.get(i).getPhone());
+//                 map1.put(str[3],users.get(i).getUsername());
+//                 map1.put(str[4],users.get(i).getEmail());
+//                 map1.put(str[5],users.get(i).getSex());
+//                 map1.put(str[6],users.get(i).getCity());
+//                 map1.put(str[7],users.get(i).getSign());
+//                 map1.put(str[8],users.get(i).getClassify());
+//                 map1.put(str[9],users.get(i).getWealth());
+//                 list.add(map1);
+//        }
+//        //  map1.clear();  清除map数据
+//        map.put("data",list);
         return map;
     }
 
@@ -117,4 +130,8 @@ public class home {
         }
         return map;
     }
+
+
+
+
 }

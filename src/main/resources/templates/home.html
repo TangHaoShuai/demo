@@ -106,10 +106,10 @@
             <button class="layui-btn" onclick="returnTheText()" > <-返回试卷 </button>
             <form class="layui-form" id="formTestPager">
 
-                <div class="layui-form-item">
+                <div class="layui-form-item"  id="TheTextID" style="display: none;">
                     <label class="layui-form-label">ID</label>
                     <div class="layui-input-block">
-                        <input readonly="readonly" id="TheTextID" style="display: none;" type="text" name="uid" lay-verify="required" lay-reqtext="ID是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">
+                        <input readonly="readonly"  id="TheTextIDVla"  type="text" name="uid" lay-verify="required" lay-reqtext="ID是必填项，岂能为空？"  autocomplete="off" class="layui-input">
                     </div>
                 </div>
 
@@ -158,7 +158,7 @@
 
                 <div class="layui-form-item">
                     <div class="layui-input-block">
-                        <button type="button" onclick=AddTestPager("AddTheTestJson") class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+                        <button type="button" onclick=AddTestPager() class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
                     </div>
                 </div>
             </form>
@@ -249,6 +249,7 @@
 
     <!-- 考试  TheTest -->
     <script th:inline="none">
+        var key;
         layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element', 'slider'], function () {
             var laydate = layui.laydate //日期
                 , laypage = layui.laypage //分页
@@ -318,6 +319,7 @@
                     case 'add':
                         layer.msg('添加');
                         // TheTestPopout("/home/AddUser", "添加信息", "", "", "")
+                        key = 0 ;
                         AddTheTest();
                         CanceTheTextID();
                         break;
@@ -359,8 +361,9 @@
                 } else if (layEvent === 'edit') {
                     layer.msg('编辑操作');
                     //在这里面输入任何合法的js语句
+                    key = 1 ;
                     AddTheTest();
-                    TheTextID();
+                    TheTextID(data.uid);
                 } else if (layEvent == "reload") {
                     layer.msg('重载');
                     // window.location.href="/home/home";
@@ -379,21 +382,39 @@
 
     <!-- 试卷  TestPager -->
     <script th:inline="none">
-       function AddTestPager(URl) {
-           $.ajax({
-               //几个参数需要注意一下
-               type: "POST",//方法类型
-               dataType: "json",//预期服务器返回的数据类型
-               url: URl,//url
-               data: $('#formTestPager').serialize(),
-               success: function (data) {
-                   console.log(data.name);//打印服务端返回的数据(调试用)
-                   alert(data.name);
-               },
-               error: function () {
-                   alert("异常！");
-               }
-           });
+       function AddTestPager() {
+           if (key == 0){
+               $.ajax({
+                   //几个参数需要注意一下
+                   type: "POST",//方法类型
+                   dataType: "json",//预期服务器返回的数据类型
+                   url: "AddTheTestJson",//url
+                   data: $('#formTestPager').serialize(),
+                   success: function (data) {
+                       console.log(data.name);//打印服务端返回的数据(调试用)
+                       alert(data.name);
+                   },
+                   error: function () {
+                       alert("异常！");
+                   }
+               });
+           }else{
+               $.ajax({
+                   //几个参数需要注意一下
+                   type: "POST",//方法类型
+                   dataType: "json",//预期服务器返回的数据类型
+                   url: "updateTheTestJson",//url
+                   data: $('#formTestPager').serialize(),
+                   success: function (data) {
+                       console.log(data.name);//打印服务端返回的数据(调试用)
+                       alert(data.name);
+                   },
+                   error: function () {
+                       alert("异常！");
+                   }
+               });
+           }
+
        }
         
         var TestPagerVar;
@@ -690,7 +711,7 @@
             table.render({
                 elem: '#demo'
               //  , height: 650
-                , url: '/home/userjson?val=' //数据接口
+                , url: '/home/userjson1?val=' //数据接口
                 , title: '用户表'
                 , page: true //开启分页
               //  , limits: [20, 30, 40]
@@ -1283,9 +1304,6 @@
     </script>
 
 
-
-
-
     <script>
         var myArrayName=new Array()
         var myArrayID=new Array()
@@ -1315,7 +1333,8 @@
                 }
             });
 
-        function TheTextID() {
+        function TheTextID(val) {
+            $("#TheTextIDVla").val(val);
             document.getElementById("TheTextID").style.display = "";
         }
         function  CanceTheTextID() {
@@ -1328,7 +1347,7 @@
         }
 
 
-        // add试卷
+        // 考试
         function AddTheTest() {
             document.getElementById("thetest").style.display = "none";
             document.getElementById("addthetest").style.display = "";
