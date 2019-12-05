@@ -5,6 +5,7 @@ import com.example.demo.model.TheTest;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -26,5 +27,12 @@ public interface TheTestRepository extends CrudRepository<TheTest,String> {
     int updateTheTest(String tid, String theName , String  theStartTime ,String theEndOfTime,
                       String TestPaperID ,
                        String State);
+
+    @Query(nativeQuery = true, value = "SELECT * FROM the_test ORDER BY :urderkey   limit :startrow, :sizesss ; ")
+    List<TheTest> findTheTests(@Param("urderkey") String urderkey, @Param("startrow") Integer startrow, @Param("sizesss") Integer sizesss);
+
+    @Query(nativeQuery = true, value = "SELECT * FROM testpaper where the_name = :thename  ORDER BY :urderkey    limit :startrow, :sizesss ; ")
+    List<TheTest> findTheTestName(@Param("thename") String thename,@Param("urderkey") String urderkey, @Param("startrow") Integer startrow,@Param("sizesss") Integer sizesss);
+
 
 }

@@ -39,16 +39,17 @@ public class ExerciseController {
 
     @ResponseBody
     @GetMapping("/ExerciseJson")
-    public  Map<String,Object> TestPagerJson(String val){
-        List<Exercise> exercises = exerciseRepository.findAll();
+    public  Map<String,Object> TestPagerJson(String val, Integer page, Integer limit){
+        List<Exercise> count = exerciseRepository.findAll();
+        List<Exercise> exercises = exerciseRepository.findExercises("uid",(page-1)*limit,limit*page);
         if(val.length() > 0 ){
-            List<Exercise> list = exerciseRepository.findBySid(val);
+            List<Exercise> list = exerciseRepository.findExerciseBySid(val,"uid",(page-1)*limit,limit*page);
             exercises = list;
         }
         Map<String,Object> map = new HashMap<>();
         map.put("code",0);
         map.put("msg",0);
-        map.put("count", exercises.size());
+        map.put("count", count.size());
         List<Object> list = new ArrayList<Object>();
         String[] str = new String[]{"id","sid","tid","question","answer","item1",
                 "item2","item3","item4","explains","url"};
@@ -107,9 +108,9 @@ public class ExerciseController {
 
     @ResponseBody
     @GetMapping("/GetExerciseJson")
-    public  Map<String,Object> GetTestPagerJson(String val){
+    public  Map<String,Object> GetTestPagerJson(String val, Integer page, Integer limit){
           //  List<Exercise>exercises = new ArrayList<>();
-        List<Exercise> exercises = exerciseRepository.findByTid(val);
+        List<Exercise> exercises = exerciseRepository.findExerciseByTid(val,"uid",(page-1)*limit,limit*page);
         Map<String,Object> map = new HashMap<>();
         map.put("code",0);
         map.put("msg",0);

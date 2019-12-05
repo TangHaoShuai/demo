@@ -109,7 +109,7 @@
                 <div class="layui-form-item"  id="TheTextID" style="display: none;">
                     <label class="layui-form-label">ID</label>
                     <div class="layui-input-block">
-                        <input readonly="readonly"  id="TheTextIDVla"  type="text" name="uid" lay-verify="required" lay-reqtext="ID是必填项，岂能为空？"  autocomplete="off" class="layui-input">
+                        <input readonly="readonly"  id="TheTextIDVla"  type="text" name="uid" lay-verify="title"   autocomplete="off" class="layui-input">
                     </div>
                 </div>
 
@@ -711,7 +711,7 @@
             table.render({
                 elem: '#demo'
               //  , height: 650
-                , url: '/home/userjson1?val=' //数据接口
+                , url: '/home/userjson?val=' //数据接口
                 , title: '用户表'
                 , page: true //开启分页
               //  , limits: [20, 30, 40]
@@ -1011,7 +1011,7 @@
                 , shade: 0.6 //遮罩透明度
                 , maxmin: true //允许全屏最小化
                 , anim: 1 //0-6的动画形式，-1不开启
-                , content: '<form class="layui-form" id="formTestPager" action="#" method ="Post">\n' +
+                , content: '<form class="layui-form" id="formTestPager01"  method ="Post">\n' +
                     '  <div class="layui-form-item">\n' +
                     '    <label class="layui-form-label">试卷编号</label>\n' +
                     '    <div class="layui-input-block">\n' +
@@ -1186,7 +1186,7 @@
                     type: "POST",//方法类型
                     dataType: "json",//预期服务器返回的数据类型
                     url: MzzURL,//url
-                    data: $('#formTestPager').serialize(),
+                    data: $('#formTestPager01').serialize(),
                     success: function (data) {
                         console.log(data.name);//打印服务端返回的数据(调试用)
                         alert(data.name);
@@ -1201,7 +1201,7 @@
                     type: "POST",//方法类型
                     dataType: "json",//预期服务器返回的数据类型
                     url: MzzURL,//url
-                    data: $('#formTestPager').serialize(),
+                    data: $('#formTestPager01').serialize(),
                     success: function (data) {
                         console.log(data.name);//打印服务端返回的数据(调试用)
                         alert(data.name);

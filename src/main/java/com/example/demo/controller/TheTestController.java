@@ -58,16 +58,17 @@ public class TheTestController {
 
     @ResponseBody
     @GetMapping("TheTestJson")
-    public Map<String,Object> TheTestJosn(String val){
-        List<TheTest> theTests = theTestRepository.findAll();
+    public Map<String,Object> TheTestJosn(String val, Integer page, Integer limit){
+        List<TheTest> count = theTestRepository.findAll();
+        List<TheTest> theTests = theTestRepository.findTheTests("uid",(page-1)*limit,limit*page);
         if(val.length() > 0 ){
-            List<TheTest> list = theTestRepository.findByTheName(val);
+            List<TheTest> list = theTestRepository.findTheTestName(val,"uid",(page-1)*limit,limit*page);
             theTests = list;
         }
         Map<String, Object> map = new HashMap<>();
         map.put("code",0);
         map.put("msg",0);
-        map.put("count", theTests.size());
+        map.put("count", count.size());
         List<Object> list = new ArrayList<Object>();
         String[] str = new String[]{"uid","theName","theStartTime","theEndOfTime","TestPaperID","State"};
         for (int i = 0; i< theTests.size() ; i++){

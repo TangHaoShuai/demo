@@ -29,16 +29,22 @@ public class TestPaperController {
 
     @ResponseBody
     @GetMapping("/TestPaperJson")
-        public Map<String,Object> TestPaperJson(String val) {
-        List<TestPaper> testPapers = testPagerRepository.findAll();
+        public Map<String,Object> TestPaperJson(String val, Integer page, Integer limit) {
+        List<TestPaper> testPapers = new ArrayList<>();
+        if (page == null || limit == null){
+           testPapers = testPagerRepository.findAll();
+        }else{
+           testPapers = testPagerRepository.findTestPapers("uid",(page-1)*limit,limit*page);
+        }
+        List<TestPaper> count = testPagerRepository.findAll();
         if(val.length() > 0 ){
-            List<TestPaper> list = testPagerRepository.findByTid(val);
+            List<TestPaper> list = testPagerRepository.findTestPapersTid(val,"uid",(page-1)*limit,limit*page);
             testPapers = list;
         }
         Map<String, Object> map = new HashMap<>();
         map.put("code",0);
         map.put("msg",0);
-        map.put("count", testPapers.size());
+        map.put("count", count.size());
         List<Object> list = new ArrayList<Object>();
         String[] str = new String[]{"id","tid","tname","introduce"};
         for (int i = 0; i< testPapers.size() ; i++){

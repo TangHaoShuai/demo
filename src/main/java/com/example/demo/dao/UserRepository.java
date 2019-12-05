@@ -17,6 +17,7 @@ public interface UserRepository extends CrudRepository<User,String> {
    //   List<User> findByStudentNumber(String StudentNumber);
 
       Page<User> findAll(Pageable pageable);
+
    //   Page<User> findUserByStudentNumber(Pageable pageable);
 
       @Transactional
@@ -29,8 +30,11 @@ public interface UserRepository extends CrudRepository<User,String> {
       @Query(value = "delete from User where studentNumber =?1")
       int delUser(String studentNumber);
 
-      @Query(value = "select * from User limit :page,:total ",nativeQuery = true)
-      List<User> getList(@Param("page")int page ,@Param("total") int total);
 
 
+      @Query(nativeQuery = true, value = "SELECT * FROM user ORDER BY :urderkey   limit :startrow, :sizesss ; ")
+      List<User> findUsers(@Param("urderkey") String urderkey, @Param("startrow") Integer startrow,@Param("sizesss") Integer sizesss);
+
+      @Query(nativeQuery = true, value = "SELECT * FROM user where student_number = :student_number  ORDER BY :urderkey    limit :startrow, :sizesss ; ")
+      List<User> findUserstudentNumber(@Param("student_number") String studentNumber,@Param("urderkey") String urderkey, @Param("startrow") Integer startrow,@Param("sizesss") Integer sizesss);
 }

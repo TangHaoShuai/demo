@@ -26,112 +26,106 @@ import java.util.Map;
 @Service
 public class home {
     @Autowired
-    private  UserRepository userRepository;
+    private UserRepository userRepository;
 
     @ResponseBody
     @GetMapping("user")
-    public User loginUser(User user){
+    public User loginUser(User user) {
         User user1 = new User();
-    if (user.getUsername().equals("123")  && user.getPassWord() .equals("123")){
-        user1.setStudentNumber("20170313015");
-        user1.setUsername("张三");
-        user1.setEmail("1648375651@qq.com");
-        return  user1;
-    }else{
-        User user2 = new User();
-        return  user2;
-    }
+        if (user.getUsername().equals("123") && user.getPassWord().equals("123")) {
+            user1.setStudentNumber("20170313015");
+            user1.setUsername("张三");
+            user1.setEmail("1648375651@qq.com");
+            return user1;
+        } else {
+            User user2 = new User();
+            return user2;
+        }
 
     }
 
 
     @ResponseBody
     @GetMapping("/userjson")
-    public  Map<String,Object> userJosn(String val,int page ,int limit){
-      //  http://localhost:8080/home/userjson1?val=&page=1&limit=10
-//        Pageable pageable =  PageRequest.of(page,limit,Sort.Direction.DESC, "uid");
-//        Page<User> users = userRepository.findAll(pageable);
+    public Map<String, Object> userJosn(String val, Integer page, Integer limit) {
+        //  http://localhost:8080/home/userjson1?val=&page=3&limit=10
+        List<User> count = userRepository.findAll();
+        List<User> users = userRepository.findUsers("uid",(page-1)*limit,limit*page);
+        if (val.length() > 0) {
+            List<User> list = userRepository.findUserstudentNumber(val,"uid",(page-1)*limit,limit*page);
+            users = list;
+        }
+        Map<String, Object> map = new HashMap<>();
+        map.put("code", 0);
+        map.put("msg", 0);
+        map.put("count", count.size());
+        List<Object> list = new ArrayList<Object>();
 
-
-//
-//        List<User> users = userRepository.findAll();
-//        if(val.length() >0 ){
-//            List<User> list = userRepository.findByStudentNumber(val);
-//            users = list;
-//        }
-        Map<String,Object> map = new HashMap<>();
-//        map.put("code",0);
-//        map.put("msg",0);
-//        map.put("count",users.size());
-//        List<Object> list = new ArrayList<Object>();
-//
-//        String[] str = new String[]{"id","studentNumber","phone","username",
-//        "email","sex","city","sign","classify","wealth"};
-//        for (int i=0 ; i< users.size() ; i++ ){
-//                 Map<String,Object> map1 = new HashMap<>();
-//                 map1.put(str[0],users.get(i).getUid());
-//                 map1.put(str[1],users.get(i).getStudentNumber());
-//                 map1.put(str[2],users.get(i).getPhone());
-//                 map1.put(str[3],users.get(i).getUsername());
-//                 map1.put(str[4],users.get(i).getEmail());
-//                 map1.put(str[5],users.get(i).getSex());
-//                 map1.put(str[6],users.get(i).getCity());
-//                 map1.put(str[7],users.get(i).getSign());
-//                 map1.put(str[8],users.get(i).getClassify());
-//                 map1.put(str[9],users.get(i).getWealth());
-//                 list.add(map1);
-//        }
-//        //  map1.clear();  清除map数据
-//        map.put("data",list);
+        String[] str = new String[]{"id", "studentNumber", "phone", "username",
+                "email", "sex", "city", "sign", "classify", "wealth"};
+        for (int i = 0; i < users.size(); i++) {
+            Map<String, Object> map1 = new HashMap<>();
+            map1.put(str[0], users.get(i).getUid());
+            map1.put(str[1], users.get(i).getStudentNumber());
+            map1.put(str[2], users.get(i).getPhone());
+            map1.put(str[3], users.get(i).getUsername());
+            map1.put(str[4], users.get(i).getEmail());
+            map1.put(str[5], users.get(i).getSex());
+            map1.put(str[6], users.get(i).getCity());
+            map1.put(str[7], users.get(i).getSign());
+            map1.put(str[8], users.get(i).getClassify());
+            map1.put(str[9], users.get(i).getWealth());
+            list.add(map1);
+        }
+        //  map1.clear();  清除map数据
+        map.put("data", list);
         return map;
     }
 
     @PostMapping("/AddUser")
     @ResponseBody
-    public  Map<String, String> test(User user){
+    public Map<String, String> test(User user) {
         Map<String, String> map = new HashMap<>();
         if (user.getStudentNumber() == "" || user.getUsername() == "" || user.getPassWord() == "" || user.getEmail() == ""
-                || user.getPhone() == "" || user.getSign() == "" || user.getClassify() == "" || user.getWealth() == "" || user.getSex() == ""){
-            map.put("name","添加失败内容不能为空");
-        }else{
+                || user.getPhone() == "" || user.getSign() == "" || user.getClassify() == "" || user.getWealth() == "" || user.getSex() == "") {
+            map.put("name", "添加失败内容不能为空");
+        } else {
             userRepository.save(user);
-            map.put("name","添加成功");
+            map.put("name", "添加成功");
         }
         return map;
     }
 
     @PostMapping("/deleteUser")
     @ResponseBody
-    public  Map<String, String> deleteUser(User user){
+    public Map<String, String> deleteUser(User user) {
         Map<String, String> map = new HashMap<>();
-        if (user.getStudentNumber() == ""){
-            map.put("name","学号不可以为空");
-        }else{
+        if (user.getStudentNumber() == "") {
+            map.put("name", "学号不可以为空");
+        } else {
             userRepository.delUser(user.getStudentNumber());
-            map.put("name","删除成功");
+            map.put("name", "删除成功");
         }
         return map;
     }
 
     @PostMapping("/updateUser")
     @ResponseBody
-    public  Map<String, String> updateUser(User user){
+    public Map<String, String> updateUser(User user) {
         Map<String, String> map = new HashMap<>();
         if (user.getStudentNumber() == "" || user.getUsername() == "" || user.getPassWord() == "" || user.getEmail() == ""
-        || user.getPhone() == "" || user.getSign() == "" || user.getClassify() == "" || user.getWealth() == "" || user.getSex() == ""){
-            map.put("name","修改失败内容不能为空");
-        }else{
+                || user.getPhone() == "" || user.getSign() == "" || user.getClassify() == "" || user.getWealth() == "" || user.getSex() == "") {
+            map.put("name", "修改失败内容不能为空");
+        } else {
             userRepository.updateUser(user.getStudentNumber(),
-                    user.getUsername(),user.getPassWord()
-                    ,user.getEmail(),user.getPhone(),user.getCity(),
-                    user.getSign(),user.getClassify(),user.getWealth(),
+                    user.getUsername(), user.getPassWord()
+                    , user.getEmail(), user.getPhone(), user.getCity(),
+                    user.getSign(), user.getClassify(), user.getWealth(),
                     user.getSex());
-            map.put("name","修改成功");
+            map.put("name", "修改成功");
         }
         return map;
     }
-
-
 
 
 }

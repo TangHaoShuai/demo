@@ -114,10 +114,10 @@ class DemoApplicationTests {
 
 //        Pageable pageable =  PageRequest.of(0,5);
 //        Page<User> users = userRepository.findUserByStudentNumber(pageable);
-        List<User> users = userRepository.getList(1,1);
-        for (User u:users ){
-            System.out.println(u.getStudentNumber());
-        }
+      //  List<User> users = userRepository.findUser("uid",1,8);
+//        for (User u:users ){
+//            System.out.println(u.getStudentNumber());
+//        }
         System.out.println();
     }
 
