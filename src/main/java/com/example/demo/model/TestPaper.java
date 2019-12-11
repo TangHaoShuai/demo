@@ -25,7 +25,7 @@ public class TestPaper {
     private  String tname;
 
     ///介绍
-    @Column(name = "introduce" ,length = 200)
+    @Column(name = "introduce" ,length = 500)
     private  String introduce;
 
 

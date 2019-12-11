@@ -3,7 +3,6 @@ package com.example.demo.controller;
 
 import com.example.demo.dao.ExerciseRepository;
 import com.example.demo.model.Exercise;
-import com.example.demo.model.TestPaper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,8 +25,7 @@ public class ExerciseController {
     @PostMapping("/AddExercise")
     public Map<String, String> AddTestpaper(Exercise exercise){
         Map<String, String> map = new HashMap<>();
-        if(exercise.getQuestion() == "" || exercise.getTid() == "" || exercise.getAnswer() == "" || exercise.getItem1() == ""
-        || exercise.getItem2() == "" || exercise.getItem3() == "" || exercise.getItem4() == "" || exercise.getExplains() == ""
+        if(exercise.getQuestion() == "" || exercise.getTid() == "" || exercise.getAnswer() == "" ||  exercise.getExplains() == ""
         || exercise.getUrl() == "") {
             map.put("name","添加失败内容不能为空");
         }else {

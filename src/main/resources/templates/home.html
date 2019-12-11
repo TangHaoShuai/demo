@@ -69,7 +69,7 @@
             <legend>跨域--------------------中国图书馆</legend>
         </fieldset>
 
-             <iframe id="Mzzcontent" src="http://www.chnlib.com/" scrolling="no" width="100%"></iframe>
+        <iframe id="Mzzcontent" src="http://www.chnlib.com/" scrolling="no" width="100%"></iframe>
 
         <div class="layui-footer">
             <!-- 底部固定区域 -->
@@ -82,55 +82,59 @@
         <!-- 内容主体区域 -->
 
         <div id="thetest">
-        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-            <legend>考试管理</legend>
-        </fieldset>
-        <div class="demoTable">
-            搜索考试名字：
-            <div class="layui-inline">
-                <input class="layui-input" name="id" id="demoReload5" autocomplete="off">
+            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+                <legend>考试管理</legend>
+            </fieldset>
+            <div class="demoTable">
+                搜索考试名字：
+                <div class="layui-inline">
+                    <input class="layui-input" name="id" id="demoReload5" autocomplete="off">
+                </div>
+                <button class="layui-btn" data-type="reload">搜索</button>
             </div>
-            <button class="layui-btn" data-type="reload">搜索</button>
-        </div>
 
-        <table class="layui-hide" id="demo5" lay-filter="test5"></table>
-        <script type="text/html" id="barDemo5">
-            <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-        </script>
+            <table class="layui-hide" id="demo5" lay-filter="test5"></table>
+            <script type="text/html" id="barDemo5">
+                <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+                <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+            </script>
 
         </div>
 
         <div id="addthetest" style="display: none;">
 
-            <button class="layui-btn" onclick="returnTheText()" > <-返回试卷 </button>
+            <button class="layui-btn" onclick="returnTheText()"> <-返回试卷</button>
             <form class="layui-form" id="formTestPager">
 
-                <div class="layui-form-item"  id="TheTextID" style="display: none;">
+                <div class="layui-form-item" id="TheTextID" style="display: none;">
                     <label class="layui-form-label">ID</label>
                     <div class="layui-input-block">
-                        <input readonly="readonly"  id="TheTextIDVla"  type="text" name="uid" lay-verify="title"   autocomplete="off" class="layui-input">
+                        <input readonly="readonly" id="TheTextIDVla" type="text" name="uid" lay-verify="title"
+                               autocomplete="off" class="layui-input">
                     </div>
                 </div>
 
                 <div class="layui-form-item">
                     <label class="layui-form-label">考试名字</label>
                     <div class="layui-input-block">
-                        <input type="text" name="theName" lay-verify="required" lay-reqtext="考试名字是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">
+                        <input type="text" name="theName" lay-verify="required" lay-reqtext="考试名字是必填项，岂能为空？"
+                               placeholder="请输入" autocomplete="off" class="layui-input">
                     </div>
                 </div>
 
                 <div class="layui-inline">
                     <label class="layui-form-label">选择开始时间</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="theStartTime" class="layui-input" id="test5" placeholder="yyyy-MM-dd HH:mm:ss">
+                        <input type="text" name="theStartTime" class="layui-input" id="test5"
+                               placeholder="yyyy-MM-dd HH:mm:ss">
                     </div>
                 </div>
                 <br>
                 <div class="layui-inline">
                     <label class="layui-form-label">选择结束时间</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="theEndOfTime" class="layui-input" id="test6" placeholder="yyyy-MM-dd HH:mm:ss">
+                        <input type="text" name="theEndOfTime" class="layui-input" id="test6"
+                               placeholder="yyyy-MM-dd HH:mm:ss">
                     </div>
                 </div>
 
@@ -141,7 +145,7 @@
                         <select name="State" lay-filter="aihao">
                             <option value="" selected=""></option>
                             <option value="已经结束">已经结束</option>
-                            <option value="正在进行" >正在进行</option>
+                            <option value="正在进行">正在进行</option>
                             <option value="没有开始">没有开始</option>
                         </select>
                     </div>
@@ -158,7 +162,9 @@
 
                 <div class="layui-form-item">
                     <div class="layui-input-block">
-                        <button type="button" onclick=AddTestPager() class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+                        <button type="button" onclick=AddTestPager() class="layui-btn" lay-submit="" lay-filter="demo1">
+                            立即提交
+                        </button>
                     </div>
                 </div>
             </form>
@@ -173,12 +179,12 @@
 
         <!--  试卷盒子 默认显示  -->
         <div id="TestPaperDiv">
-        <!-- 内容主体区域 -->
-        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-            <legend>试卷管理</legend>
-        </fieldset>
+            <!-- 内容主体区域 -->
+            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+                <legend>试卷管理</legend>
+            </fieldset>
 
-            <div class="demoTable" >
+            <div class="demoTable">
                 搜索试卷编号：
                 <div class="layui-inline">
                     <input class="layui-input" name="id" id="demoReload2" autocomplete="off">
@@ -188,13 +194,13 @@
             <table class="layui-hide" id="demo3" lay-filter="test3"></table>
         </div>
 
-<!--             题目盒子 默认隐藏    -->
+        <!--             题目盒子 默认隐藏    -->
         <div id="ExerciseDiv" style="display: none;">
             <!-- 内容主体区域 -->
             <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
                 <legend>题目管理</legend>
             </fieldset>
-            <button class="layui-btn" onclick="TestPaper()" > <-返回试卷 </button>
+            <button class="layui-btn" onclick="TestPaper()"> <-返回试卷</button>
             <div class="demoTable">
                 搜索编号：
                 <div class="layui-inline">
@@ -209,7 +215,8 @@
             <!--        </script>-->
             <script type="text/html" id="checkboxTpl">
                 <!-- 这里的 checked 的状态只是演示 -->
-                <input type="checkbox" name="lock" value="{{d.id}}" title="锁定" lay-filter="lockDemo" {{ d.studentNumber == 201703130152 ? 'checked' : '' }}>
+                <input type="checkbox" name="lock" value="{{d.id}}" title="锁定" lay-filter="lockDemo" {{
+                       d.studentNumber== 201703130152 ? 'checked' : '' }}>
             </script>
         </div>
 
@@ -290,14 +297,14 @@
             });
 
             var $ = layui.$, active = {
-                reload: function(){
+                reload: function () {
                     var demoReload = $('#demoReload5');
                     //执行重载
                     table.reload('testReload5', {
                         page: {
                             curr: 1 //重新从第 1 页开始
                         }
-                        ,url: '/home/TheTestJson?val='+demoReload.val()
+                        , url: '/home/TheTestJson?val=' + demoReload.val()
                         // ,where: {
                         //     key: {
                         //        studentNumber: demoReload.val()
@@ -306,7 +313,7 @@
                     }, 'data');
                 }
             };
-            $('.demoTable .layui-btn').on('click', function(){
+            $('.demoTable .layui-btn').on('click', function () {
                 var type = $(this).data('type');
                 active[type] ? active[type].call(this) : '';
             });
@@ -319,7 +326,7 @@
                     case 'add':
                         layer.msg('添加');
                         // TheTestPopout("/home/AddUser", "添加信息", "", "", "")
-                        key = 0 ;
+                        key = 0;
                         AddTheTest();
                         CanceTheTextID();
                         break;
@@ -339,7 +346,6 @@
                             layer.msg('删除');
                         }
                         break;
-
                 }
                 ;
             });
@@ -361,7 +367,7 @@
                 } else if (layEvent === 'edit') {
                     layer.msg('编辑操作');
                     //在这里面输入任何合法的js语句
-                    key = 1 ;
+                    key = 1;
                     AddTheTest();
                     TheTextID(data.uid);
                 } else if (layEvent == "reload") {
@@ -382,41 +388,41 @@
 
     <!-- 试卷  TestPager -->
     <script th:inline="none">
-       function AddTestPager() {
-           if (key == 0){
-               $.ajax({
-                   //几个参数需要注意一下
-                   type: "POST",//方法类型
-                   dataType: "json",//预期服务器返回的数据类型
-                   url: "AddTheTestJson",//url
-                   data: $('#formTestPager').serialize(),
-                   success: function (data) {
-                       console.log(data.name);//打印服务端返回的数据(调试用)
-                       alert(data.name);
-                   },
-                   error: function () {
-                       alert("异常！");
-                   }
-               });
-           }else{
-               $.ajax({
-                   //几个参数需要注意一下
-                   type: "POST",//方法类型
-                   dataType: "json",//预期服务器返回的数据类型
-                   url: "updateTheTestJson",//url
-                   data: $('#formTestPager').serialize(),
-                   success: function (data) {
-                       console.log(data.name);//打印服务端返回的数据(调试用)
-                       alert(data.name);
-                   },
-                   error: function () {
-                       alert("异常！");
-                   }
-               });
-           }
+        function AddTestPager() {
+            if (key == 0) {
+                $.ajax({
+                    //几个参数需要注意一下
+                    type: "POST",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: "AddTheTestJson",//url
+                    data: $('#formTestPager').serialize(),
+                    success: function (data) {
+                        console.log(data.name);//打印服务端返回的数据(调试用)
+                        alert(data.name);
+                    },
+                    error: function () {
+                        alert("异常！");
+                    }
+                });
+            } else {
+                $.ajax({
+                    //几个参数需要注意一下
+                    type: "POST",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: "updateTheTestJson",//url
+                    data: $('#formTestPager').serialize(),
+                    success: function (data) {
+                        console.log(data.name);//打印服务端返回的数据(调试用)
+                        alert(data.name);
+                    },
+                    error: function () {
+                        alert("异常！");
+                    }
+                });
+            }
 
-       }
-        
+        }
+
         var TestPagerVar;
         layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element', 'slider'], function () {
             var laydate = layui.laydate //日期
@@ -448,7 +454,7 @@
                 ]], id: 'testReload4'
             });
             //监听行单击事件（双击事件为：rowDouble）（单击为row）
-            table.on('rowDouble(test3)', function(obj){
+            table.on('rowDouble(test3)', function (obj) {
                 var data = obj.data;
                 // layer.alert(JSON.stringify(data), {
                 //     title: '当前行数据：'
@@ -460,7 +466,7 @@
                     page: {
                         curr: 1 //重新从第 1 页开始
                     }
-                    ,url: '/home/ExerciseJson?val='+data.tid
+                    , url: '/home/ExerciseJson?val=' + data.tid
                     // ,where: {
                     //     key: {
                     //        studentNumber: demoReload.val()
@@ -471,14 +477,14 @@
                 TestPagerVar = data.tid;
             });
             var $ = layui.$, active = {
-                reload: function(){
+                reload: function () {
                     var demoReload = $('#demoReload2');
                     //执行重载
                     table.reload('testReload4', {
                         page: {
                             curr: 1 //重新从第 1 页开始
                         }
-                        ,url: '/home/TestPaperJson?val='+demoReload.val()
+                        , url: '/home/TestPaperJson?val=' + demoReload.val()
                         // ,where: {
                         //     key: {
                         //        studentNumber: demoReload.val()
@@ -487,7 +493,7 @@
                     }, 'data');
                 }
             };
-            $('.demoTable .layui-btn').on('click', function(){
+            $('.demoTable .layui-btn').on('click', function () {
                 var type = $(this).data('type');
                 active[type] ? active[type].call(this) : '';
             });
@@ -547,7 +553,7 @@
                 }
             });
         });
-        </script>
+    </script>
 
     <!-- 试题  Exercise -->
     <script th:inline="none">
@@ -587,43 +593,33 @@
                     , {fixed: 'right', width: 200, align: 'center', toolbar: '#barDemo'}
                 ]], id: 'testReload3'
             });
-            //监听行单击事件（双击事件为：rowDouble）
-            // table.on('row(test2)', function(obj){
-            //     var data = obj.data;
-            //     layer.alert(JSON.stringify(data), {
-            //         title: '当前行数据：'
-            //     });
-            //     //标注选中样式
-            //     obj.tr.addClass('layui-table-click').siblings().removeClass('layui-table-click');
-            // });
-
             var $ = layui.$, active = {
-                reload: function(){
+                reload: function () {
                     var demoReload = $('#demoReload1');
                     var demoReloadVar = demoReload.val();
-                    if (demoReloadVar == "" || demoReloadVar == null){
+                    if (demoReloadVar == "" || demoReloadVar == null) {
                         demoReloadVar = TestPagerVar;
                         //执行重载
                         table.reload('testReload3', {
                             page: {
                                 curr: 1 //重新从第 1 页开始
                             }
-                            ,url: '/home/ExerciseJson?val='+demoReloadVar
+                            , url: '/home/ExerciseJson?val=' + demoReloadVar
 
                         }, 'data');
-                    } else{
+                    } else {
                         //执行重载
                         table.reload('testReload3', {
                             page: {
                                 curr: 1 //重新从第 1 页开始
                             }
-                            ,url: '/home/GetExerciseJson?val='+demoReloadVar
+                            , url: '/home/GetExerciseJson?val=' + demoReloadVar
                         }, 'data');
                     }
 
                 }
             };
-            $('.demoTable .layui-btn').on('click', function(){
+            $('.demoTable .layui-btn').on('click', function () {
                 var type = $(this).data('type');
                 active[type] ? active[type].call(this) : '';
             });
@@ -635,7 +631,7 @@
                 switch (obj.event) {
                     case 'add':
                         layer.msg('添加');
-                        PopoutExercise("/home/AddExercise", "添加信息", "", "", "",TestPagerVar)
+                        PopoutExercise("/home/AddExercise", "添加信息", "", "", "", TestPagerVar)
                         break;
                     case 'update':
                         if (data.length === 0) {
@@ -653,7 +649,8 @@
                             layer.msg('删除');
                         }
                         break;
-                };
+                }
+                ;
             });
 
             //监听行工具事件
@@ -672,7 +669,7 @@
                 } else if (layEvent === 'edit') {
                     layer.msg('编辑操作');
                     //在这里面输入任何合法的js语句
-                    PopoutExercise("updateExercise", "更新信息", data.tid, "readonly=\"readonly\"", "update",data.sid)
+                    PopoutExercise("updateExercise", "更新信息", data.tid, "readonly=\"readonly\"", "update", data.sid)
                 } else if (layEvent == "reload") {
                     layer.msg('重载');
                     // window.location.href="/home/home";
@@ -710,12 +707,12 @@
             //执行一个 table 实例
             table.render({
                 elem: '#demo'
-              //  , height: 650
+                //  , height: 650
                 , url: '/home/userjson?val=' //数据接口
                 , title: '用户表'
                 , page: true //开启分页
-              //  , limits: [20, 30, 40]
-              //   , limit: 20 //每页默认显示的数量
+                //  , limits: [20, 30, 40]
+                //   , limit: 20 //每页默认显示的数量
                 , toolbar: 'default' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
                 , totalRow: false //开启合计行
                 , cols: [[ //表头
@@ -735,16 +732,15 @@
             });
 
 
-
             var $ = layui.$, active = {
-                reload: function(){
+                reload: function () {
                     var demoReload = $('#demoReload');
                     //执行重载
                     table.reload('testReload', {
                         page: {
                             curr: 1 //重新从第 1 页开始
                         }
-                        ,url: '/home/userjson?val='+demoReload.val()
+                        , url: '/home/userjson?val=' + demoReload.val()
                         // ,where: {
                         //     key: {
                         //        studentNumber: demoReload.val()
@@ -753,7 +749,7 @@
                     }, 'data');
                 }
             };
-            $('.demoTable .layui-btn').on('click', function(){
+            $('.demoTable .layui-btn').on('click', function () {
                 var type = $(this).data('type');
                 active[type] ? active[type].call(this) : '';
             });
@@ -856,7 +852,7 @@
                     '      <div class="layui-input-inline">\n' +
                     '        <input type="text" class="layui-input" id="test4" placeholder="HH:mm:ss">\n' +
                     '      </div>\n' +
-                    '   </div>'+
+                    '   </div>' +
                     '  <div class="layui-form-item">\n' +
                     '    <label class="layui-form-label">城市</label>\n' +
                     '    <div class="layui-input-block">\n' +
@@ -1042,7 +1038,7 @@
         }
 
         //封装起来的弹框Exercise
-        function PopoutExercise(MzzURL, title, tid, mzzStyle, identifying,sid) {
+        function PopoutExercise(MzzURL, title, tid, mzzStyle, identifying, sid) {
             if (tid == "") {
                 tid = "输入新的试卷编号"
             }
@@ -1057,7 +1053,7 @@
                     '  <div class="layui-form-item">\n' +
                     '    <label class="layui-form-label">所属试卷编号</label>\n' +
                     '    <div class="layui-input-block">\n' +
-                    '      <input type="text" value="' + sid + ' " name="sid" lay-verify="required" lay-reqtext="试卷是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input" ' + mzzStyle + '>\n' +
+                    '      <input type="text" value="' + sid + ' " name="sid"  lay-verify="title" lay-reqtext="试卷是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input" ' + mzzStyle + '>\n' +
                     '    </div>\n' +
                     '  </div>\n' +
                     '  <div class="layui-form-item">\n' +
@@ -1082,25 +1078,25 @@
                     '  <div class="layui-form-item">\n' +
                     '    <label class="layui-form-label">选项A</label>\n' +
                     '    <div class="layui-input-block">\n' +
-                    '      <input type="text" name="item1" lay-verify="required" lay-reqtext="说明是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">\n' +
+                    '      <input type="text" name="item1"  lay-verify="title" lay-reqtext="说明是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">\n' +
                     '    </div>\n' +
                     '  </div>\n' +
                     '  <div class="layui-form-item">\n' +
                     '    <label class="layui-form-label">选项B</label>\n' +
                     '    <div class="layui-input-block">\n' +
-                    '      <input type="text" name="item2" lay-verify="required" lay-reqtext="说明是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">\n' +
+                    '      <input type="text" name="item2"  lay-verify="title" lay-reqtext="说明是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">\n' +
                     '    </div>\n' +
                     '  </div>\n' +
                     '  <div class="layui-form-item">\n' +
                     '    <label class="layui-form-label">选项C</label>\n' +
                     '    <div class="layui-input-block">\n' +
-                    '      <input type="text" name="item3" lay-verify="required" lay-reqtext="说明是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">\n' +
+                    '      <input type="text" name="item3"  lay-verify="title" lay-reqtext="说明是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">\n' +
                     '    </div>\n' +
                     '  </div>\n' +
                     '  <div class="layui-form-item">\n' +
                     '    <label class="layui-form-label">选项D</label>\n' +
                     '    <div class="layui-input-block">\n' +
-                    '      <input type="text" name="item4" lay-verify="required" lay-reqtext="说明是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">\n' +
+                    '      <input type="text" name="item4"  lay-verify="title" lay-reqtext="说明是必填项，岂能为空？" placeholder="请输入" autocomplete="off" class="layui-input">\n' +
                     '    </div>\n' +
                     '  </div>\n' +
                     '  <div class="layui-form-item">\n' +
@@ -1159,6 +1155,7 @@
                 });
             }
         }
+
         //  User 删除的Ajax
         function deleteUser(MzzURL, studentNumber) {
             $.ajax({
@@ -1212,6 +1209,7 @@
                 });
             }
         }
+
         ///  TestPager 删除
         function deleteTestPager(MzzURL, tid) {
             $.ajax({
@@ -1264,6 +1262,7 @@
                 });
             }
         }
+
         ///  Exercise 删除
         function deleteExercise(MzzURL, tid) {
             $.ajax({
@@ -1305,42 +1304,43 @@
 
 
     <script>
-        var myArrayName=new Array()
-        var myArrayID=new Array()
+        var myArrayName = new Array()
+        var myArrayID = new Array()
         var divA = document.getElementById("mzzhtml");
-            $.ajax({
-                //几个参数需要注意一下
-                type: "Get",//方法类型
-                dataType: "json",//预期服务器返回的数据类型
+        $.ajax({
+            //几个参数需要注意一下
+            type: "Get",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
 
-                url: "/home/TestPaperJson?val=",//url
-                async: false,
-                success: function (data) {
+            url: "/home/TestPaperJson?val=",//url
+            async: false,
+            success: function (data) {
 
-                    var count = data.count
-                    for (var q=0;q<count;q++){
-                        myArrayName[q] = data.data[q].tname
-                        myArrayID[q] = data.data[q].tid
-                    }
-                    console.log(myArrayName);//打印服务端返回的数据(调试用)
-                    console.log(myArrayID);//打印服务端返回的数据(调试用)
-                    for(var i=0;i<myArrayName.length ;i++){
-                        divA.innerHTML = divA.innerHTML+'<h3> <option value=" '+myArrayID[i] +' "> '+"试卷名字"+myArrayName[i]+" ID:"+myArrayID[i]+'</option></h3>';
-                    }
-                },
-                error: function () {
-                    alert("异常！");
+                var count = data.count
+                for (var q = 0; q < count; q++) {
+                    myArrayName[q] = data.data[q].tname
+                    myArrayID[q] = data.data[q].tid
                 }
-            });
+                console.log(myArrayName);//打印服务端返回的数据(调试用)
+                console.log(myArrayID);//打印服务端返回的数据(调试用)
+                for (var i = 0; i < myArrayName.length; i++) {
+                    divA.innerHTML = divA.innerHTML + '<h3> <option value=" ' + myArrayID[i] + ' "> ' + "试卷名字" + myArrayName[i] + " ID:" + myArrayID[i] + '</option></h3>';
+                }
+            },
+            error: function () {
+                alert("异常！");
+            }
+        });
 
         function TheTextID(val) {
             $("#TheTextIDVla").val(val);
             document.getElementById("TheTextID").style.display = "";
         }
-        function  CanceTheTextID() {
+
+        function CanceTheTextID() {
             document.getElementById("TheTextID").style.display = "none";
         }
-        
+
         function returnTheText() {
             document.getElementById("thetest").style.display = "";
             document.getElementById("addthetest").style.display = "none";
@@ -1378,17 +1378,18 @@
         }
 
         // 显示习题盒子
-        function examination () {
+        function examination() {
             document.getElementById("TestPaperDiv").style.display = "none";
             document.getElementById("ExerciseDiv").style.display = "";
         }
 
         // 显示试卷盒子
-        function TestPaper () {
+        function TestPaper() {
             document.getElementById("TestPaperDiv").style.display = "";//显示试题盒子
             document.getElementById("ExerciseDiv").style.display = "none";//隐藏试卷盒子
         }
-       // 主页
+
+        // 主页
         function MzzHome() {
             document.getElementById("home").style.display = "";
             document.getElementById("examinationPaper").style.display = "none";
@@ -1399,6 +1400,7 @@
         // 解析：将你嵌入页面的高度设置成屏幕可视高度减去原框架顶部和底部高度（宽度设置同理）。
         reSerSize();
         window.onresize = reSerSize();
+
         // 跨域HTML 代码
         function reSerSize() {
             var windowsheight = window.innerHeight;
@@ -1413,9 +1415,8 @@
     </script>
 
 
-
     <script>
-        layui.use('laydate', function(){
+        layui.use('laydate', function () {
             var laydate = layui.laydate;
 
             //常规用法
@@ -1426,121 +1427,121 @@
             //国际版
             laydate.render({
                 elem: '#test1-1'
-                ,lang: 'en'
+                , lang: 'en'
             });
 
             //年选择器
             laydate.render({
                 elem: '#test2'
-                ,type: 'year'
+                , type: 'year'
             });
 
             //年月选择器
             laydate.render({
                 elem: '#test3'
-                ,type: 'month'
+                , type: 'month'
             });
 
             //时间选择器
             laydate.render({
                 elem: '#test4'
-                ,type: 'time'
+                , type: 'time'
             });
 
             //日期时间选择器
             laydate.render({
                 elem: '#test5'
-                ,type: 'datetime'
+                , type: 'datetime'
             });
             //日期时间选择器
             laydate.render({
                 elem: '#test6'
-                ,type: 'datetime'
+                , type: 'datetime'
             });
             //日期范围
             laydate.render({
                 elem: '#test6'
-                ,range: true
+                , range: true
             });
 
             //年范围
             laydate.render({
                 elem: '#test7'
-                ,type: 'year'
-                ,range: true
+                , type: 'year'
+                , range: true
             });
 
             //年月范围
             laydate.render({
                 elem: '#test8'
-                ,type: 'month'
-                ,range: true
+                , type: 'month'
+                , range: true
             });
 
             //时间范围
             laydate.render({
                 elem: '#test9'
-                ,type: 'time'
-                ,range: true
+                , type: 'time'
+                , range: true
             });
 
             //日期时间范围
             laydate.render({
                 elem: '#test10'
-                ,type: 'datetime'
-                ,range: true
+                , type: 'datetime'
+                , range: true
             });
 
             //自定义格式
             laydate.render({
                 elem: '#test11'
-                ,format: 'yyyy年MM月dd日'
+                , format: 'yyyy年MM月dd日'
             });
             laydate.render({
                 elem: '#test12'
-                ,format: 'dd/MM/yyyy'
+                , format: 'dd/MM/yyyy'
             });
             laydate.render({
                 elem: '#test13'
-                ,format: 'yyyyMMdd'
+                , format: 'yyyyMMdd'
             });
             laydate.render({
                 elem: '#test14'
-                ,type: 'time'
-                ,format: 'H点m分'
+                , type: 'time'
+                , format: 'H点m分'
             });
             laydate.render({
                 elem: '#test15'
-                ,type: 'month'
-                ,range: '~'
-                ,format: 'yyyy-MM'
+                , type: 'month'
+                , range: '~'
+                , format: 'yyyy-MM'
             });
             laydate.render({
                 elem: '#test16'
-                ,type: 'datetime'
-                ,range: '到'
-                ,format: 'yyyy年M月d日H时m分s秒'
+                , type: 'datetime'
+                , range: '到'
+                , format: 'yyyy年M月d日H时m分s秒'
             });
 
             //开启公历节日
             laydate.render({
                 elem: '#test17'
-                ,calendar: true
+                , calendar: true
             });
 
             //自定义重要日
             laydate.render({
                 elem: '#test18'
-                ,mark: {
+                , mark: {
                     '0-10-14': '生日'
-                    ,'0-12-31': '跨年' //每年的日期
-                    ,'0-0-10': '工资' //每月某天
-                    ,'0-0-15': '月中'
-                    ,'2017-8-15': '' //如果为空字符，则默认显示数字+徽章
-                    ,'2099-10-14': '呵呵'
+                    , '0-12-31': '跨年' //每年的日期
+                    , '0-0-10': '工资' //每月某天
+                    , '0-0-15': '月中'
+                    , '2017-8-15': '' //如果为空字符，则默认显示数字+徽章
+                    , '2099-10-14': '呵呵'
                 }
-                ,done: function(value, date){
-                    if(date.year === 2017 && date.month === 8 && date.date === 15){ //点击2017年8月15日，弹出提示语
+                , done: function (value, date) {
+                    if (date.year === 2017 && date.month === 8 && date.date === 15) { //点击2017年8月15日，弹出提示语
                         layer.msg('这一天是：中国人民抗日战争胜利72周年');
                     }
                 }
@@ -1549,9 +1550,9 @@
             //限定可选日期
             var ins22 = laydate.render({
                 elem: '#test-limit1'
-                ,min: '2016-10-14'
-                ,max: '2080-10-14'
-                ,ready: function(){
+                , min: '2016-10-14'
+                , max: '2080-10-14'
+                , ready: function () {
                     ins22.hint('日期可选值设定在 <br> 2016-10-14 到 2080-10-14');
                 }
             });
@@ -1559,38 +1560,38 @@
             //前后若干天可选，这里以7天为例
             laydate.render({
                 elem: '#test-limit2'
-                ,min: -7
-                ,max: 7
+                , min: -7
+                , max: 7
             });
 
             //限定可选时间
             laydate.render({
                 elem: '#test-limit3'
-                ,type: 'time'
-                ,min: '09:30:00'
-                ,max: '17:30:00'
-                ,btns: ['clear', 'confirm']
+                , type: 'time'
+                , min: '09:30:00'
+                , max: '17:30:00'
+                , btns: ['clear', 'confirm']
             });
 
             //同时绑定多个
-            lay('.test-item').each(function(){
+            lay('.test-item').each(function () {
                 laydate.render({
                     elem: this
-                    ,trigger: 'click'
+                    , trigger: 'click'
                 });
             });
 
             //初始赋值
             laydate.render({
                 elem: '#test19'
-                ,value: '1989-10-14'
-                ,isInitValue: true
+                , value: '1989-10-14'
+                , isInitValue: true
             });
 
             //选中后的回调
             laydate.render({
                 elem: '#test20'
-                ,done: function(value, date){
+                , done: function (value, date) {
                     layer.alert('你选择的日期是：' + value + '<br>获得的对象是' + JSON.stringify(date));
                 }
             });
@@ -1598,48 +1599,48 @@
             //日期切换的回调
             laydate.render({
                 elem: '#test21'
-                ,change: function(value, date){
+                , change: function (value, date) {
                     layer.msg('你选择的日期是：' + value + '<br><br>获得的对象是' + JSON.stringify(date));
                 }
             });
             //不出现底部栏
             laydate.render({
                 elem: '#test22'
-                ,showBottom: false
+                , showBottom: false
             });
 
             //只出现确定按钮
             laydate.render({
                 elem: '#test23'
-                ,btns: ['confirm']
+                , btns: ['confirm']
             });
 
             //自定义事件
             laydate.render({
                 elem: '#test24'
-                ,trigger: 'mousedown'
+                , trigger: 'mousedown'
             });
 
             //点我触发
             laydate.render({
                 elem: '#test25'
-                ,eventElem: '#test25-1'
-                ,trigger: 'click'
+                , eventElem: '#test25-1'
+                , trigger: 'click'
             });
 
             //双击我触发
-            lay('#test26-1').on('dblclick', function(){
+            lay('#test26-1').on('dblclick', function () {
                 laydate.render({
                     elem: '#test26'
-                    ,show: true
-                    ,closeStop: '#test26-1'
+                    , show: true
+                    , closeStop: '#test26-1'
                 });
             });
 
             //日期只读
             laydate.render({
                 elem: '#test27'
-                ,trigger: 'click'
+                , trigger: 'click'
             });
 
             //非input元素
@@ -1650,41 +1651,41 @@
             //墨绿主题
             laydate.render({
                 elem: '#test29'
-                ,theme: 'molv'
+                , theme: 'molv'
             });
 
             //自定义颜色
             laydate.render({
                 elem: '#test30'
-                ,theme: '#393D49'
+                , theme: '#393D49'
             });
 
             //格子主题
             laydate.render({
                 elem: '#test31'
-                ,theme: 'grid'
+                , theme: 'grid'
             });
 
 
             //直接嵌套显示
             laydate.render({
                 elem: '#test-n1'
-                ,position: 'static'
+                , position: 'static'
             });
             laydate.render({
                 elem: '#test-n2'
-                ,position: 'static'
-                ,lang: 'en'
+                , position: 'static'
+                , lang: 'en'
             });
             laydate.render({
                 elem: '#test-n3'
-                ,type: 'month'
-                ,position: 'static'
+                , type: 'month'
+                , position: 'static'
             });
             laydate.render({
                 elem: '#test-n4'
-                ,type: 'time'
-                ,position: 'static'
+                , type: 'time'
+                , position: 'static'
             });
         });
     </script>

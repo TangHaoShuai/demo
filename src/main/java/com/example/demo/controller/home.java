@@ -31,17 +31,17 @@ public class home {
     @ResponseBody
     @GetMapping("user")
     public User loginUser(User user) {
+        List<User> users = new ArrayList<>();
         User user1 = new User();
-        if (user.getUsername().equals("123") && user.getPassWord().equals("123")) {
-            user1.setStudentNumber("20170313015");
-            user1.setUsername("张三");
-            user1.setEmail("1648375651@qq.com");
+        users = userRepository.findByStudentNumber(user.getStudentNumber());
+        if (users.size() > 1 || users.size() == 0 ) {
             return user1;
-        } else {
-            User user2 = new User();
-            return user2;
+        } else if (users.get(0).getPassWord().equals(user.getPassWord())){
+            user1 = users.get(0);
+            return user1;
+        }else {
+            return user1;
         }
-
     }
 
 
@@ -50,9 +50,9 @@ public class home {
     public Map<String, Object> userJosn(String val, Integer page, Integer limit) {
         //  http://localhost:8080/home/userjson1?val=&page=3&limit=10
         List<User> count = userRepository.findAll();
-        List<User> users = userRepository.findUsers("uid",(page-1)*limit,limit*page);
+        List<User> users = userRepository.findUsers("uid", (page - 1) * limit, limit * page);
         if (val.length() > 0) {
-            List<User> list = userRepository.findUserstudentNumber(val,"uid",(page-1)*limit,limit*page);
+            List<User> list = userRepository.findUserstudentNumber(val, "uid", (page - 1) * limit, limit * page);
             users = list;
         }
         Map<String, Object> map = new HashMap<>();

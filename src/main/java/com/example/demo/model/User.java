@@ -13,43 +13,46 @@ public class User {
     @Column(length = 32)
     private String uid;
 
-    @Column(name="studentNumber",length = 200)
+    @Column(name = "studentNumber", length = 200)
     private String studentNumber;
 
-    @Column(name="username",length = 200)
+    @Column(name = "username", length = 200)
     private String username;
 
-    @Column(name="passWord",length = 200)
+    @Column(name = "passWord", length = 200)
     private String passWord;
 
 
     ///邮箱
-    @Column(name="email",length = 200)
+    @Column(name = "email", length = 200)
     private String email;
 
 
     ///电话
-    @Column(name="phone",length = 200)
+    @Column(name = "phone", length = 200)
     private String phone;
 
     ///城市
-    @Column(name="city",length = 200)
+    @Column(name = "city", length = 200)
     private String city;
 
     ///签名
-    @Column(name="sign",length = 200)
+    @Column(name = "sign", length = 200)
     private String sign;
 
     ///职业
-    @Column(name="classify",length = 200)
+    @Column(name = "classify", length = 200)
     private String classify;
 
     ///财富
-    @Column(name="wealth",length = 200)
+    @Column(name = "wealth", length = 200)
     private String wealth;
 
-    @Column(name="sex")
+    @Column(name = "sex")
     private String sex;  ///1为男性 2为女性
+
+    public User() {
+    }
 
 
     public String getUid() {

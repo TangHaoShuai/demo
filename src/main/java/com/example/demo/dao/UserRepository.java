@@ -14,7 +14,8 @@ import java.util.List;
 public interface UserRepository extends CrudRepository<User,String> {
       List<User> findAll();
       int deleteByStudentNumber(User user);
-   //   List<User> findByStudentNumber(String StudentNumber);
+
+      List<User> findByStudentNumber(String StudentNumber);
 
       Page<User> findAll(Pageable pageable);
 
